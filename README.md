@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -22,3 +23,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+=======
+# Rails-My_Book_App
+>>>>>>> 9ee16c34150e543e9a5cc07c1cfdeb37046a9f11
