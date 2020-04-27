@@ -125,9 +125,57 @@ input, select {
 /* ======================================================================================== */
 
 /* ここから下にCSSを記述 */
+
+// ナビバー
+
+.header-nav {
+    background-color: #fff !important;
+    border-bottom: 1px solid #d8d8d8;
+}
 .navbar-brand{
-    color:rgb(23, 230, 23)!important;
     font-family: "Nico Moji";
     font-size: 45px;
-    margin:1%;
+    margin-left:1%;
+}
+
+.navbar-light .navbar-nav .nav-link{
+    padding: 17px;
+}
+
+.navbar-light .navbar-toggler {
+    border-color: rgba(0,0,0,0);
+}
+
+button.navbar-toggler:focus{
+  outline:none;
+}
+
+
+// フッター
+
+footer{
+    background-color: #e6e6fa !important;
+}
+
+footer div{
+    text-align: center;
+    padding-top: 1rem;
+}
+
+.footer-logo{
+    font-family: "Nico Moji";
+    color: #000;
+    text-decoration : none !important;
+    font-size: 30px;
+}
+
+.footer-logo:hover{
+    color: #000;
+}
+
+footer p{
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+    padding: 0.5rem 0px 1.5rem 0px;
 }
