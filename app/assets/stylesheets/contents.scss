@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+// contents_index(ユーザー画面、コンテンツ一覧画面)
 // ユーザーセクション==============================
 
 .user-profile{
@@ -100,3 +102,91 @@ th{
 td{
     padding: 3% !important;
 }
+
+// content_new(新規投稿作成画面)
+
+.content_new {
+    h2:first-child{
+        font-size: 2em;
+        font-weight: 600;
+        padding: 2% 0;
+        color: #6C757D;
+    }
+    h2:last-child{
+        padding: 0 !important;
+    }
+    .fa-book-open{
+        padding-left: 1%;
+    }
+    input{
+        height: 50px;
+    }
+    label{
+        padding: 10px 0;
+        font-weight: 500;
+    }
+    .form-group{
+        margin-bottom: 2% !important;
+    }
+    #exampleFormControlFile1{
+        padding-top: 1%;
+    }
+    #exampleFormControlSelect1{
+        height: 50px;
+    }
+    #headingOne{
+        padding-left: 1%;
+    }
+    .add-choice{
+        width: 100%;
+        text-align: left;
+    }
+    .add-choice:focus{
+        box-shadow: none;
+    }
+    .btn:first-child{
+        padding: 1%;
+    }
+    .btn[type="submit"]{
+        width: 100%;
+        margin: 5% 0;
+        height: 50px;
+    }
+    .btn[type="submit"]{
+        background:#6C757D;
+        color:#fff;
+        border:none;
+        position:relative;
+        height:60px;
+        font-size:1.6em;
+        padding:0 2em;
+        cursor:pointer;
+        transition:800ms ease all;
+        outline:none;
+    }
+    .btn[type="submit"]:hover{
+        background:#fff;
+        color:#1AAB8A;
+    }
+    .btn[type="submit"]:before,.btn[type="submit"]:after{
+        content:'';
+        position:absolute;
+        top:0;
+        right:0;
+        height:2px;
+        width:0;
+        background: #1AAB8A;
+        transition:400ms ease all;
+    }
+    .btn[type="submit"]:after{
+        right:inherit;
+        top:inherit;
+        left:0;
+        bottom:0;
+    }
+    .btn[type="submit"]:hover:before,.btn[type="submit"]:hover:after{
+        width:100%;
+        transition:800ms ease all;
+    }
+}
+

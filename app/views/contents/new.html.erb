@@ -1,8 +1,59 @@
 <div class="container-sm index">
-    <section>
-        <h2>新規投稿</h2>
+    <section class="content_new">
+        <h2>新規ブックマーク<i class="fas fa-book-open"></i></h2>
+        <form>
+            <div class="form-group">
+                <label for="formGroupExampleInput">投稿名</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="投稿名を入力してください">
+            </div>
 
+            <div class="form-group">
+                <label for="formGroupExampleInput">URL</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="URLを入力してください">
+            </div>
 
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">投稿説明</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="formGroupExampleInput">カテゴリー</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="カテゴリーを入力してください">
+            </div>
+            <%#アコーディオン(オプション設定)=================%>
+            <div class="accordion" id="accordionExample">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                        <button class="btn add-choice" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            + 追加の設定
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">写真・動画のアップロード</label>
+                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">タグ</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="#タグを入力してください">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">投稿公開範囲</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>1.全てのユーザーに投稿を公開</option>
+                                <option>2.フォロー、フォロワーのみに投稿を公開</option>
+                                <option>3.非公開</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn">投稿する</button>
+        </form>
     </section>
 
 
