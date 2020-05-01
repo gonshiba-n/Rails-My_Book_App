@@ -88,6 +88,10 @@ $tl: 0.6s; // transition length
 
 
 // テーブルセクション==============================
+.table{
+    width: 100%;
+    table-layout: fixed;
+}
 tr:nth-last-child(1) {
     border-bottom: 1px solid #DEE2DE !important;
 }
@@ -101,9 +105,22 @@ th{
 }
 td{
     padding: 3% !important;
+    word-wrap: break-word;
+}
+td:first-child{
+    font-weight: 800;
 }
 
 // content_new(新規投稿作成画面)
+
+.alert-dismissible .close {
+    padding: 0.4rem 1.25rem !important ;
+}
+
+.close:focus{
+    outline: 0;
+    box-shadow: none;
+}
 
 .content_new {
     h2:first-child{
@@ -128,10 +145,10 @@ td{
     .form-group{
         margin-bottom: 2% !important;
     }
-    #exampleFormControlFile1{
+    .exampleFormControl{
         padding-top: 1%;
     }
-    #exampleFormControlSelect1{
+    .private-select{
         height: 50px;
     }
     #headingOne{

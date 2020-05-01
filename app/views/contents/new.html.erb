@@ -1,25 +1,25 @@
 <div class="container-sm index">
     <section class="content_new">
         <h2>新規ブックマーク<i class="fas fa-book-open"></i></h2>
-        <form>
+        <%= form_with model: @content do |f| %>
             <div class="form-group">
-                <label for="formGroupExampleInput">投稿名</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="投稿名を入力してください">
+                <%= f.label :name, 'タイトル' %>
+                <%= f.text_field :name, class: 'form-control', id: 'content_name', placeholder: '投稿名を入力してください' %>
             </div>
 
             <div class="form-group">
-                <label for="formGroupExampleInput">URL</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="URLを入力してください">
+                <%= f.label :url,'URL' %>
+                <%= f.text_field :url, class: 'form-control', id: 'content_url', placeholder: 'URLを入力してください' %>
             </div>
 
             <div class="form-group">
-                <label for="exampleFormControlTextarea1">投稿説明</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <%= f.label :description, '投稿説明' %>
+                <%= f.text_area :description, rows: 3, class: 'form-control', id: 'content_description' %>
             </div>
 
             <div class="form-group">
-                <label for="formGroupExampleInput">カテゴリー</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="カテゴリーを入力してください">
+                <%= f.label :category, "カテゴリー" %>
+                <%= f.text_field :category, class: 'form-control', id: 'content_category', placeholder: 'カテゴリーを入力して下さい' %>
             </div>
             <%#アコーディオン(オプション設定)=================%>
             <div class="accordion" id="accordionExample">
@@ -35,25 +35,26 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="exampleFormControlFile1">写真・動画のアップロード</label>
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                            <input type="file" class="form-control-file exampleFormControl">
                         </div>
                         <div class="form-group">
-                            <label for="formGroupExampleInput">タグ</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="#タグを入力してください">
+                            <%= f.label :tag, "タグ" %>
+                            <%= f.text_field :tag, class: 'form-control', id: 'content_tag', placeholder: '#タグを入力してください' %>
                         </div>
                         <div class="form-group">
-                            <label for="exampleFormControlSelect1">投稿公開範囲</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>1.全てのユーザーに投稿を公開</option>
-                                <option>2.フォロー、フォロワーのみに投稿を公開</option>
-                                <option>3.非公開</option>
-                            </select>
+                            <%= f.label :private, "投稿公開範囲" %>
+                            <%= f.select :private,[
+                                ["1.全てのユーザーに投稿を公開", 1],
+                                ["2.フォロー、フォロワーのみに投稿を公開", 2],
+                                ["3.非公開", 3]],{},
+                                class:'form-control private-select', id: 'content_private'
+                            %>
                         </div>
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn">投稿する</button>
-        </form>
+            <%= f.button '投稿する', class: 'btn' %>
+        <% end %>
     </section>
 
 
