@@ -92,6 +92,12 @@ $tl: 0.6s; // transition length
     width: 100%;
     table-layout: fixed;
 }
+
+.table-link{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
 tr:nth-last-child(1) {
     border-bottom: 1px solid #DEE2DE !important;
 }
@@ -107,9 +113,6 @@ td{
     padding: 3% !important;
     word-wrap: break-word;
 }
-td:first-child{
-    font-weight: 800;
-}
 
 // content_new(新規投稿作成画面)
 
@@ -122,7 +125,7 @@ td:first-child{
     box-shadow: none;
 }
 
-.content_new {
+.content_box {
     h2:first-child{
         font-size: 2em;
         font-weight: 600;
@@ -206,4 +209,7 @@ td:first-child{
         transition:800ms ease all;
     }
 }
+
+// content_show(投稿確認画面)
+
 

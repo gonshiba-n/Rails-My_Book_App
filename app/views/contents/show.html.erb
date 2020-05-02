@@ -1,2 +1,80 @@
-<h1>Contents#show</h1>
-<p>Find me in app/views/contents/show.html.erb</p>
+<div class="container-sm index">
+    <section class="content_box">
+        <h2>ブックマーク詳細<i class="fas fa-book-open"></i></h2>
+    <section class="tables show">
+        <table class="table table-hover">
+            <tbody>
+                <tr>
+                    <th> タイトル </th>
+                    <td> <%= @content.name %> </td>
+                </tr>
+                <tr>
+                    <th> URL </th>
+                    <td> <%= link_to @content.url %> </td>
+                </tr>
+                <tr>
+                    <th> 投稿説明 </th>
+                    <td> <%= if @content.description.blank?
+                                'None'
+                            else
+                                simple_format(h(@content.description),{}, sanitize: false, wrapper_tag: "div")
+                            end %>
+                    </td>
+                </tr>
+                <tr>
+                    <th> カテゴリー </th>
+                    <td> <%=  if @content.category.blank?
+                                'None'
+                            else
+                                @content.category
+                            end %></td>
+                </tr>
+                <tr>
+                    <th> イメージ </th>
+                    <td> <%=  if @content.image_name.blank?
+                                '未実装'
+                            else
+                                @content.image_name
+                            end %></td>
+                </tr>
+                <tr>
+                    <th> タグ </th>
+                    <td> 未実装 </td>
+                </tr>
+                <th> 投稿公開範囲 </th>
+                <td> <%= if @content.private == 1
+                        "1.全てのユーザーに投稿を公開"
+                        elsif @content.private == 2
+                        "2.フォロー、フォロワーのみに投稿を公開"
+                        elsif @content.private == 3
+                        "3.非公開"
+                        else
+                        "問題があります。管理者へ連絡してください"
+                        end%>
+                </td>
+                <tr>
+                    <th> 投稿日時 </th>
+                    <td> <%= @content.created_at.to_s(:datetime_jp) %></td>
+                </tr>
+                <tr>
+                    <th> 編集日時 </th>
+                    <td><%= @content.updated_at.to_s(:datetime_jp) %></td>
+                </tr>
+            </tbody>
+    </table>
+    </section>
+
+
+ <%#SVG B====================%>
+    <%= link_to contents_path, data_toggle: 'tooltip', data_placement: 'topdo', title: '戻る'  do %>
+        <%= embedded_svg('back.svg', class: "plus")%>
+    <% end %>
+ <%#SVG Delete==========================%>
+    <%= link_to content_path, method: :delete, data_toggle: 'tooltip', data_placement: 'topdo', title: '削除',data: {confirm: "ブックマークを削除します"} do %>
+        <%= embedded_svg('delete.svg', class: "delete")%>
+    <% end %>
+ <%#SVG Edit====================%>
+    <%= link_to edit_content_path, data_toggle: 'tooltip', data_placement: 'topdo', title: '投稿編集'  do %>
+        <%= embedded_svg('edit.svg', class: "timeline")%>
+    <% end %>
+</div>

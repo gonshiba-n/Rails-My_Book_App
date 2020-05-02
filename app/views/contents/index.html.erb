@@ -56,11 +56,15 @@
             <tbody>
                 <% @contents.each do |content| %>
                 <tr>
-                    <td scope="row"> <%= content.name %> </td>
-                    <td> <%= link_to "URL", content.url %> </td>
-                    <td> <%= content.description %> </td>
-                    <td><%= content.category %></td>
-                    <td><%= content.updated_at.to_s(:datetime_jp) %></td>
+                <td> <%= link_to content.name, content %> </td>
+                <td> <%= link_to 'URL', content.url %> </td>
+                <%#概要は空白の場合の処理も記載%>
+                <td><%= link_to content.description.blank? ? 'None' : content.description, content %></td>
+
+
+                <%#カテゴリーは空白の場合の処理も記載%>
+                <td><%= link_to content.category.blank? ? 'None' : content.category, content %></td>
+                <td><%= link_to content.updated_at.to_s(:datetime_jp), content %></td>
                 </tr>
                 <% end %>
             </tbody>
@@ -69,13 +73,17 @@
 
 
  <%#SVG +==========================%>
-    <%= link_to new_content_path do %>
+    <%= link_to new_content_path, data_toggle: 'tooltip', data_placement: 'topdo', title: '新規作成' do %>
         <%= embedded_svg('plus.svg', class: "plus")%>
     <% end %>
 
+ <%#SVG Delete==========================%>
+    <%= link_to contents_path, method: :delete, data_toggle: 'tooltip', data_placement: 'topdo', title: '削除',data: {confirm: "ブックマークを削除します"} do %>
+        <%= embedded_svg('delete.svg', class: "delete")%>
+    <% end %>
  <%#SVG T====================%>
  <%#SVG Timeline機能未実装====================%>
-    <%= link_to new_content_path do %>
+    <%= link_to new_content_path, data_toggle: 'tooltip', data_placement: 'topdo', title: 'タイムライン'  do %>
         <%= embedded_svg('timeline.svg', class: "timeline")%>
     <% end %>
 </div>

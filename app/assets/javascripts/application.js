@@ -14,9 +14,9 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
-//= require　jquery
-//= require　popper
-//= require　bootstrap-sprockets
+//= require jquery
+//= require popper
+//= require bootstrap-sprockets
 
 
 // 検索バー contents/index
