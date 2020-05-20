@@ -46,6 +46,7 @@
         <table class="table table-hover">
             <thead>
                 <tr>
+                    <th scope="col">選択</th>
                     <th scope="col">タイトル</th>
                     <th scope="col">URL</th>
                     <th scope="col">概要</th>
@@ -54,18 +55,28 @@
                 </tr>
             </thead>
             <tbody>
-                <% @contents.each do |content| %>
-                <tr>
-                <td> <%= link_to content.name, content %> </td>
-                <td> <%= link_to 'URL', content.url %> </td>
-                <%#概要は空白の場合の処理も記載%>
-                <td><%= link_to content.description.blank? ? 'None' : content.description, content %></td>
+                <%= form_with model: @contents, url: contents_path, method: :delete do |f| %>
+                    <% @contents.each do |content| %>
+                    <% @count += 1%>
+                    <tr>
+                    <td>
+                        <%= f.check_box :content_ids, {type: 'checkbox', class: 'checkbox-select', id: "checkbox#{@count}", multiple: true, include_hidden: false}, content.id %>
+                        <%= f.label :'', for: "checkbox#{@count}",class: 'select-label' %>
+                    </td>
+                    <td> <%= link_to content.name, content %> </td>
+                    <td> <%= link_to 'URL', content.url %> </td>
+                    <%#概要は空白の場合の処理も記載%>
+                    <td><%= link_to content.description.blank? ? 'None' : content.description, content %></td>
 
 
-                <%#カテゴリーは空白の場合の処理も記載%>
-                <td><%= link_to content.category.blank? ? 'None' : content.category, content %></td>
-                <td><%= link_to content.updated_at.to_s(:datetime_jp), content %></td>
-                </tr>
+                    <%#カテゴリーは空白の場合の処理も記載%>
+                    <td><%= link_to content.category.blank? ? 'None' : content.category, content %></td>
+                    <td><%= link_to content.updated_at.to_s(:datetime_jp), content %></td>
+                    </tr>
+                    <% end %>
+                    <%= f.button contents_path, data_toggle: 'tooltip', data_placement: 'topdo', title: '削除',data: {confirm: "ブックマークを削除します", turbolinks: false},class: 'select_submit' do %>
+                        <%= embedded_svg('delete.svg', class: "delete")%>
+                    <% end %>
                 <% end %>
             </tbody>
     </table>
@@ -78,12 +89,16 @@
     <% end %>
 
  <%#SVG Delete==========================%>
-    <%= link_to contents_path, method: :delete, data_toggle: 'tooltip', data_placement: 'topdo', title: '削除',data: {confirm: "ブックマークを削除します"} do %>
-        <%= embedded_svg('delete.svg', class: "delete")%>
-    <% end %>
+
  <%#SVG T====================%>
  <%#SVG Timeline機能未実装====================%>
     <%= link_to new_content_path, data_toggle: 'tooltip', data_placement: 'topdo', title: 'タイムライン'  do %>
         <%= embedded_svg('timeline.svg', class: "timeline")%>
     <% end %>
 </div>
+
+
+
+
+
+

@@ -85,6 +85,12 @@ $tl: 0.6s; // transition length
     cursor: pointer;
 }
 
+.select_submit{
+    overflow: hidden;
+    position: relative;
+    left: -100px;
+}
+
 
 
 // テーブルセクション==============================
@@ -213,3 +219,36 @@ td{
 // content_show(投稿確認画面)
 
 
+// @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+// @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
+
+// $color: #6C757D; /* Red */
+
+// .select-label {
+//     cursor: pointer;
+//     &:before{
+//     display: inline-block;
+//     content: "+";
+//     margin: 0 10px 0 0;
+//         width: 35px;
+//         height: 35px;
+//     border: 3px solid $color;
+//         border-radius: 100%;
+//     vertical-align: middle;
+//     color: $color;
+//     font-size: 30px;
+//     text-align: center;
+//     font-weight: 700;
+//     line-height: 0.8em;
+//     transition: transform 0.2s ease-in-out;
+//     }
+// }
+
+// .checkbox-select:checked + .select-label:before{
+//     background: $color;
+//     color: #fff;
+//     transform:rotate(135deg);
+//     transform-origin: center center;
+// }
+
+// .checkbox-select { visibility: hidden; }

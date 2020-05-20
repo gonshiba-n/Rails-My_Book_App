@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   end
 
   resources :contents
+  delete "contents" => "contents#select_destroy"
 end
