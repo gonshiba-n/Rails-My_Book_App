@@ -36,11 +36,12 @@ class ContentsController < ApplicationController
   end
 
   def select_destroy
+    p "呼ばれたよ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝"
     select_content_params.each{|id|
       content = Content.find(id)
       content.destroy
     }
-    redirect_to contents_path, notice: "ブックマークを削除しました"
+    redirect_to contents_url, notice: "ブックマークを削除しました"
   end
 
 

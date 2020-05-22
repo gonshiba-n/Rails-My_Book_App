@@ -13,11 +13,11 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree.
+//= require_tree .
 //= require jquery
 //= require popper
 //= require bootstrap-sprockets
 
 
 // 検索バー contents/index
-document.addEventListener("touchstart", function () { }, true);
+document.addEventListener("", function () { }, true);
