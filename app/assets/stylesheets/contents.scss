@@ -85,12 +85,6 @@ $tl: 0.6s; // transition length
     cursor: pointer;
 }
 
-.select_submit{
-    overflow: hidden;
-    position: relative;
-    left: -100px;
-}
-
 
 
 // テーブルセクション==============================
@@ -121,7 +115,15 @@ td{
 }
 
 // content_new(新規投稿作成画面)
+.errors-val{
+    list-style: none;
+    color: red;
+    padding: 0 0 1% 0;
+    text-decoration: underline;
+}
 
+
+// index_html select_check_box
 .alert-dismissible .close {
     padding: 0.4rem 1.25rem !important ;
 }
@@ -216,9 +218,6 @@ td{
     }
 }
 
-// content_show(投稿確認画面)
-
-
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
 @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
 
@@ -252,3 +251,9 @@ $color: #6C757D; /* Red */
 }
 
 .checkbox-select { visibility: hidden; }
+
+.select_submit{
+    overflow: hidden;
+    position: relative;
+    left: -1000px;
+}

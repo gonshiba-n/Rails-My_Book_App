@@ -18,9 +18,12 @@ class ContentsController < ApplicationController
   end
 
   def create
-    content = Content.new(content_params)
-    content.save!
-    redirect_to contents_url, notice: "タイトル「#{content.name}」を投稿しました"
+    @content = Content.new(content_params)
+    if @content.save
+      redirect_to contents_url, notice: "タイトル「#{@content.name}」を投稿しました"
+    else
+      render :new
+    end
   end
 
   def update
@@ -36,12 +39,20 @@ class ContentsController < ApplicationController
   end
 
   def select_destroy
-    p "呼ばれたよ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝"
-    select_content_params.each{|id|
-      content = Content.find(id)
-      content.destroy
-    }
-    redirect_to contents_url, notice: "ブックマークを削除しました"
+    if select_content_params.uniq.count == 1
+      redirect_to contents_url, notice: "削除項目を選択してください"
+    else
+      select = []
+      select_content_params.map{|n|
+        select << n
+        select.delete("0")
+      }
+        select.each{|id|
+          content = Content.find(id)
+          content.destroy
+        }
+        redirect_to contents_url, notice: "ブックマークを削除しました"
+    end
   end
 
 
@@ -52,8 +63,8 @@ class ContentsController < ApplicationController
   end
 
   def select_content_params
-    ids = params.require(:content).permit(content_ids: [])
-    ids.values[0]
+        ids = params.require(:content).permit(content_ids: [])
+        ids.values[0]
   end
 
 end

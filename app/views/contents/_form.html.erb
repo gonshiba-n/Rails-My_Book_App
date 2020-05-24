@@ -1,3 +1,11 @@
+        <% if content.errors.present? %>
+            <ul> <%# エラー内容出力 %>
+                <% content.errors.full_messages.each do |message| %>
+                    <li class="errors-val"><%= message %></li>
+                <% end %>
+            </ul>
+        <% end %>
+
         <%= form_with model: content, local: true do |f| %>
             <div class="form-group">
                 <%= f.label :name, 'タイトル' %>
