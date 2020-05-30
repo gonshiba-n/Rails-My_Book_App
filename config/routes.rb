@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
 
-  root 'tops#index'
-
-  get 'tops/index'
-  get 'tops/about'
-  get 'tops/form'
-  namespace :admin do
-    resources :users
+  devise_scope :user do
+    root "devise/registrations#new"
   end
+  devise_for :users, :controllers => {
+    :registrations => 'users/registrations'
+  }
+  resources :users
+
 
   resources :contents
   delete "contents" => "contents#select_destroy", as: 'select_destroy'

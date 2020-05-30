@@ -14,7 +14,7 @@
                 <%= image_tag 'IMG_3016.JPG',class: 'user_image' %>
             </div>
             <div class="user-discription col-md-8">
-                <h2>USER_NAME</h2>
+                <h2><%= current_user.name %></h2>
                 <p>R2.2からRubyとRails学習開始。エンジニアになることが目標です。
                 家族とプログラミングが大好きです。普段は製造業の品質関係に携わっています。
                 ゆるゆるとプログラミングと学習内容について呟きます。プログラミング仲間募集中です！
@@ -29,7 +29,7 @@
                     </div>
                 </div>
             </div>
-            <button type="button" class="btn btn-secondary user-edit-btn">編集</button>
+            <%= link_to '編集', edit_user_registration_path, class: 'btn btn-secondary user-edit-btn' %>
         </div>
     </section>
 

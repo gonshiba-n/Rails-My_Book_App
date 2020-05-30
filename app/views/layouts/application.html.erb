@@ -23,15 +23,21 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
+          <% if user_signed_in? %>
             <li class="nav-item">
-              <a class="nav-link" href="#">ログイン<span class="sr-only">(current)</span></a>
+              <p class="nav-link"><%= "ログイン中: #{current_user.name}" %></p>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">ログアウト</a>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link' %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "新規登録", new_user_registration_path, class: 'nav-link' %>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">新規登録</a>
+              <%= link_to "ログイン", new_user_session_path, class: 'nav-link' %>
             </li>
+          <% end %>
             <li class="nav-item">
               <a class="nav-link" href="#">About</a>
             </li>

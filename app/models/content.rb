@@ -1,5 +1,7 @@
 class Content < ApplicationRecord
+    belongs_to :user
     has_one_attached :image
+    scope :recent, -> {order(updated_at: :desc)}
 
     validates :name, presence: true
     validates :name, length: {maximum: 35}

@@ -64,3 +64,5 @@ gem 'bootstrap'
 gem "jquery-rails"
 gem 'inline_svg'
 gem 'devise'
+gem 'devise-i18n'
+gem 'devise-i18n-views'

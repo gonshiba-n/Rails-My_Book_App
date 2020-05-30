@@ -1,16 +1,17 @@
 class ContentsController < ApplicationController
+
+  before_action :set_contents, only: [:show, :edit, :update, :destroy]
+
   def index
-    @contents = Content.all
+    @contents = current_user.contents.recent
     count = 0
     @count = count
   end
 
   def show
-    @content = Content.find(params[:id])
   end
 
   def edit
-    @content = Content.find(params[:id])
   end
 
   def new
@@ -18,7 +19,7 @@ class ContentsController < ApplicationController
   end
 
   def create
-    @content = Content.new(content_params)
+    @content = current_user.contents.new(content_params)
     if @content.save
       redirect_to contents_url, notice: "タイトル「#{@content.name}」を投稿しました"
     else
@@ -27,15 +28,13 @@ class ContentsController < ApplicationController
   end
 
   def update
-    content = Content.find(params[:id])
-    content.update!(content_params)
-    redirect_to contents_url, notice: "タイトル「#{content.name}」を更新しました"
+    @content.update!(content_params)
+    redirect_to contents_url, notice: "タイトル「#{@content.name}」を更新しました"
   end
 
   def destroy
-    content = Content.find(params[:id])
-    content.destroy
-    redirect_to contents_url, notice: "タイトル「#{content.name}」を削除しました"
+    @content.destroy
+    redirect_to contents_url, notice: "タイトル「#{@content.name}」を削除しました"
   end
 
   def select_destroy
@@ -65,6 +64,10 @@ class ContentsController < ApplicationController
   def select_content_params
         ids = params.require(:content).permit(content_ids: [])
         ids.values[0]
+  end
+
+  def set_contents
+    @content = current_user.contents.find(params[:id])
   end
 
 end
