@@ -1,0 +1,45 @@
+<div class="container-sm index">
+    <% if flash.notice.present?%>
+        <div class="alert alert-success alert-dismissible fade show" role="alert"><%= flash[:notice] %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <%end%>
+
+    <%= form_with model: @user, url: user_path, id: 'edit_user_profile', class: 'edit_user_profile', local: true, scope: :session do |f| %>
+        <section class="row user_introduction pb-4">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <%= f.label :user_image,'写真・動画のアップロード', for: 'user_image' %>
+                        <%= f.file_field :user_image, class: 'form-control-file exampleFormControl' %>
+                    </div>
+                    <% if current_user.user_image.attached? %>
+                        <%= image_tag current_user.user_image.variant(resize:'200x200').processed, class: 'user_image' %>
+                    <% else %>
+                        <%= image_tag("user_default.jpeg", :size => "150x150", class: 'default_image') %>
+                    <% end %>
+                </div>
+                <div class="user-description col-md-8">
+                    <%= f.text_field :name, class: 'form-control my-3', id: 'user_name', value: current_user.name %>
+                    <%= f.text_area :introduction, class: 'form-control my-3', id: 'user_introduction', value: current_user.introduction, rows: 4 %>
+                    <div class="row  justify-content-end">
+                        <div class="col-md-3 follow">
+                            フォロー
+                        </div>
+                        <div class="col-md-3 follower">
+                            フォロワー
+                        </div>
+                        <div class="actions">
+                            <%= link_to '詳細編集', edit_user_registration_url, data_toggle: 'tooltip', data_placement: 'topdo', class: 'btn btn-secondary' %>
+                            <%= f.button "変更", class: 'btn btn-secondary' %>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    <% end %>
+</div>
+ <%#SVG B====================%>
+    <%= link_to contents_path, data_toggle: 'tooltip', data_placement: 'topdo', title: '戻る'  do %>
+        <%= embedded_svg('back.svg', class: "plus")%>
+    <% end %>

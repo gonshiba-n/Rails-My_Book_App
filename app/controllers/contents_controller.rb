@@ -21,7 +21,7 @@ class ContentsController < ApplicationController
   def create
     @content = current_user.contents.new(content_params)
     if @content.save
-      redirect_to contents_url, notice: "タイトル「#{@content.name}」を投稿しました"
+      redirect_to contents_url, notice: "タイトル「#{@user.errors.full_messages}」を投稿しました"
     else
       render :new
     end
@@ -50,7 +50,7 @@ class ContentsController < ApplicationController
           content = Content.find(id)
           content.destroy
         }
-        redirect_to contents_url, notice: "ブックマークを削除しました"
+      redirect_to contents_url, notice: "ブックマークを削除しました"
     end
   end
 

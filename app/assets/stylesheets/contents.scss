@@ -8,32 +8,42 @@
 
 .user-profile{
     position: relative;
-}
 
+    .user-discription h2{
+        padding: 3% 0;
+        font-size: 20px;
+    }
+
+    .follow{
+        padding: 2% 0;
+    }
+    .follower{
+        padding: 2% 0;
+    }
+
+    .user-edit-btn{
+        position: absolute;
+        bottom: 2%;
+        right: 2%;
+    }
+}
 .user_image{
+    display: block;
+    margin: 0 auto;
     height: auto;
     width: 100%;
     max-width: 190px;
     min-width: 160px;
 }
-
-.user-discription h2{
-    padding: 3% 0;
-    font-size: 20px;
+.default_image{
+    display: block;
+    margin: 0 auto;
+    height: auto;
+    width: 100%;
+    max-width: 150px;
+    min-width: 150px;
 }
 
-.follow{
-    padding: 2% 0;
-}
-.follower{
-    padding: 2% 0;
-}
-
-.user-edit-btn{
-    position: absolute;
-    bottom: 2%;
-    right: 2%;
-}
 
 
 
@@ -43,46 +53,46 @@ $tl: 0.6s; // transition length
 .search-section{
     padding: 20px 0;
     margin-left: 10px;
-}
+    .search-box {
+        transition: width $tl, border-radius $tl, background $tl, box-shadow $tl;
+        width: 50px;height: 50px;
+        border-radius: 30px;border: none;
+        cursor: pointer;
+        background: rgb(235, 235, 235);
+        & + label .search-icon {    color: black    }
+        &:hover {
+        color: white;
+        background: rgb(200, 200, 200);
+        box-shadow: 0 0 0 5px rgb(61, 71, 82);
+        & + label .search-icon {    color: white    }
+    }
+    &:focus {
+        transition: width $tl cubic-bezier(0,1.22,.66,1.39), border-radius $tl, background $tl;
+        border: none;outline: none;
+        box-shadow: none;
+        padding-left: 15px;
+        cursor: text;
+        width: 400px;
+        border-radius: auto;
+        background: rgb(235, 235, 235);
+        color: black;
+        & + label .search-icon {    color: black;    }
+    }
+      &:not(:focus) {    text-indent:-5000px;    } // for more-graceful falling back (:not browsers likely support indent)
+    }
 
-.search-box {
-    transition: width $tl, border-radius $tl, background $tl, box-shadow $tl;
-    width: 50px;height: 50px;
-    border-radius: 30px;border: none;
-    cursor: pointer;
-    background: rgb(235, 235, 235);
-    & + label .search-icon {    color: black    }
-    &:hover {
-    color: white;
-    background: rgb(200, 200, 200);
-    box-shadow: 0 0 0 5px rgb(61, 71, 82);
-    & + label .search-icon {    color: white    }
-}
-&:focus {
-    transition: width $tl cubic-bezier(0,1.22,.66,1.39), border-radius $tl, background $tl;
-    border: none;outline: none;
-    box-shadow: none;
-    padding-left: 15px;
-    cursor: text;
-    width: 400px;
-    border-radius: auto;
-    background: rgb(235, 235, 235);
-    color: black;
-    & + label .search-icon {    color: black;    }
-}
-  &:not(:focus) {    text-indent:-5000px;    } // for more-graceful falling back (:not browsers likely support indent)
-}
+    #search-submit {
+        position: relative;left: -5000px;
+    }
 
-#search-submit {
-    position: relative;left: -5000px;
-}
+    .search-icon {
+        position: relative;
+        top: 3px;
+        left: -36px;
+        color: white;
+        cursor: pointer;
+    }
 
-.search-icon {
-    position: relative;
-    top: 3px;
-    left: -36px;
-    color: white;
-    cursor: pointer;
 }
 
 
@@ -91,30 +101,74 @@ $tl: 0.6s; // transition length
 .table{
     width: 100%;
     table-layout: fixed;
+
+    tr:nth-last-child(1) {
+        border-bottom: 1px solid #DEE2DE !important;
+    }
+
+    thead{
+        background-color: rgba(230, 230, 250,0.3) !important;
+    }
+
+    th{
+        padding: 3% !important;
+    }
+
+    td{
+        padding: 3% !important;
+        word-wrap: break-word;
+    }
 }
 
-.table-link{
-    width: 100%;
-    height: 100%;
-    display: block;
+// アラート（フラッシュ）
+.alert-dismissible .close {
+    padding: 0.4rem 1.25rem !important ;
 }
-tr:nth-last-child(1) {
-    border-bottom: 1px solid #DEE2DE !important;
+    .close:focus{
+        outline: 0;
+        box-shadow: none;
+    }
+
+// index_html select_check_box
+
+$color: #6C757D; /* Red */
+
+.select-label {
+    cursor: pointer;
+    &:before{
+    display: inline-block;
+    content: "+";
+    margin: 0 10px 0 0;
+        width: 35px;
+        height: 35px;
+    border: 3px solid $color;
+        border-radius: 100%;
+    vertical-align: middle;
+    color: $color;
+    font-size: 30px;
+    text-align: center;
+    font-weight: 700;
+    line-height: 0.8em;
+    transition: transform 0.2s ease-in-out;
+    }
 }
 
-thead{
-    background-color: rgba(230, 230, 250,0.3) !important;
+.checkbox-select:checked + .select-label:before{
+    background: $color;
+    color: #fff;
+    transform:rotate(135deg);
+    transform-origin: center center;
 }
 
-th{
-    padding: 3% !important;
-}
-td{
-    padding: 3% !important;
-    word-wrap: break-word;
+.checkbox-select { visibility: hidden; }
+
+.select_submit{
+    overflow: hidden;
+    position: relative;
+    left: -1000px;
 }
 
-// content_new(新規投稿作成画面)
+// content_new(新規投稿作成画面)+_form.html
 .errors-val{
     list-style: none;
     color: red;
@@ -122,16 +176,6 @@ td{
     text-decoration: underline;
 }
 
-
-// index_html select_check_box
-.alert-dismissible .close {
-    padding: 0.4rem 1.25rem !important ;
-}
-
-.close:focus{
-    outline: 0;
-    box-shadow: none;
-}
 
 .content_box {
     h2:first-child{
@@ -216,44 +260,4 @@ td{
         width:100%;
         transition:800ms ease all;
     }
-}
-
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
-@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
-
-$color: #6C757D; /* Red */
-
-.select-label {
-    cursor: pointer;
-    &:before{
-    display: inline-block;
-    content: "+";
-    margin: 0 10px 0 0;
-        width: 35px;
-        height: 35px;
-    border: 3px solid $color;
-        border-radius: 100%;
-    vertical-align: middle;
-    color: $color;
-    font-size: 30px;
-    text-align: center;
-    font-weight: 700;
-    line-height: 0.8em;
-    transition: transform 0.2s ease-in-out;
-    }
-}
-
-.checkbox-select:checked + .select-label:before{
-    background: $color;
-    color: #fff;
-    transform:rotate(135deg);
-    transform-origin: center center;
-}
-
-.checkbox-select { visibility: hidden; }
-
-.select_submit{
-    overflow: hidden;
-    position: relative;
-    left: -1000px;
 }

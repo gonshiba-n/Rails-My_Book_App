@@ -8,7 +8,6 @@ class Content < ApplicationRecord
 
     validates :url, presence: true
 
-
     validates :private, presence: true
     validates :private, length: {maximum: 1}
     validates :private, numericality: true

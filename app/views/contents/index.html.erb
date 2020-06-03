@@ -10,16 +10,16 @@
  <%#ユーザー=============================%>
     <section>
         <div class="row user-profile">
-            <div class="col-md-3 user-introduction">
-                <%= image_tag 'IMG_3016.JPG',class: 'user_image' %>
+            <div class="col-md-3">
+                <% if current_user.user_image.attached? %>
+                    <%= image_tag current_user.user_image.variant(resize:'200x200',border:'10').processed, class: 'user_image' %>
+                <% else %>
+                    <%= image_tag("user_default.jpeg", :size => "150x150",class: 'default_image') %>
+                <% end %>
             </div>
-            <div class="user-discription col-md-8">
+            <div class="col-md-8 user-discription">
                 <h2><%= current_user.name %></h2>
-                <p>R2.2からRubyとRails学習開始。エンジニアになることが目標です。
-                家族とプログラミングが大好きです。普段は製造業の品質関係に携わっています。
-                ゆるゆるとプログラミングと学習内容について呟きます。プログラミング仲間募集中です！
-                気軽に絡んでください目が笑っている笑顔※勧誘系DMは返せません
-                日々、一歩ずつでも絶対に前進して行く！</p>
+                <p><%= current_user.introduction %></p>
                 <div class="row">
                     <div class="col-md-3 follow">
                         フォロー
@@ -29,15 +29,17 @@
                     </div>
                 </div>
             </div>
-            <%= link_to '編集', edit_user_registration_path, class: 'btn btn-secondary user-edit-btn' %>
+            <%= link_to '編集', edit_user_url(current_user), class: 'btn btn-secondary user-edit-btn' %>
         </div>
     </section>
 
  <%#検索=============================%>
     <section class="search-section">
-        <form class="search-container" action="//llamaswill.tumblr.com/search">
+        <form action="//llamaswill.tumblr.com/search">
             <input id="search-box" type="text" class="search-box" name="q" />
-            <label for="search-box"><i class="fas fa-search search-icon"></i></label>
+            <label for="search-box">
+                <i class="fas fa-search search-icon"></i>
+            </label>
             <input type="submit" id="search-submit" />
         </form>
     </section>
@@ -50,7 +52,7 @@
                     <th scope="col">タイトル</th>
                     <th scope="col">URL</th>
                     <th scope="col">概要</th>
-                    <th scope="col">カテゴリー</th>
+                    <th scope="col">カテゴリ</th>
                     <th scope="col">日時</th>
                 </tr>
             </thead>
@@ -74,12 +76,15 @@
                     <td><%= link_to content.updated_at.to_s(:datetime_jp), content %></td>
                     </tr>
                     <% end %>
-                        <%= f.button select_destroy_path, method: :delete,  data_toggle: 'tooltip', data_placement: 'topdo', title: '削除',data: {confirm: "ブックマークを削除します"},class: 'select_submit' do %>
-                            <%= embedded_svg('delete.svg', class: "delete")%>
-                        <% end %>
+
+                    <%#SVG Delete==========================%>
+                    <%= f.button select_destroy_path, method: :delete,  data_toggle: 'tooltip', data_placement: 'topdo', title: '削除',data: {confirm: "ブックマークを削除します"},class: 'select_submit' do %>
+                        <%= embedded_svg('delete.svg', class: "delete")%>
+                    <% end %>
+
                 <% end %>
             </tbody>
-    </table>
+        </table>
     </section>
 
 
@@ -87,8 +92,6 @@
     <%= link_to new_content_path, data_toggle: 'tooltip', data_placement: 'topdo', title: '新規作成' do %>
         <%= embedded_svg('plus.svg', class: "plus")%>
     <% end %>
-
- <%#SVG Delete==========================%>
 
  <%#SVG T====================%>
  <%#SVG Timeline機能未実装====================%>
