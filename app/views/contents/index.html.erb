@@ -35,13 +35,13 @@
 
  <%#検索=============================%>
     <section class="search-section">
-        <form action="//llamaswill.tumblr.com/search">
-            <input id="search-box" type="text" class="search-box" name="q" />
-            <label for="search-box">
+				<%= search_form_for @q do |f| %>
+						<%= f.search_field :name_or_description_or_category_cont, id: 'search-box', class: 'search-box' %>
+						<%= f.label :name, for: 'search-box' do %>
                 <i class="fas fa-search search-icon"></i>
-            </label>
-            <input type="submit" id="search-submit" />
-        </form>
+            <% end %>
+						<%= f.submit "検索", id: 'search-submit' %>
+        <% end %>
     </section>
  <%#テーブル=============================%>
     <section class="tables">
@@ -49,11 +49,11 @@
             <thead>
                 <tr>
                     <th scope="col">選択</th>
-                    <th scope="col">タイトル</th>
-                    <th scope="col">URL</th>
-                    <th scope="col">概要</th>
-                    <th scope="col">カテゴリ</th>
-                    <th scope="col">日時</th>
+                    <th scope="col"><%= sort_link(@q, :name, "タイトル") %></th>
+                    <th scope="col"><%= sort_link(@q, :url, "URL") %></th>
+                    <th scope="col"><%= sort_link(@q, :description, "概要") %></th>
+                    <th scope="col"><%= sort_link(@q, :category, "カテゴリ") %></th>
+                    <th scope="col"><%= sort_link(@q, :updated_at, "日時") %></th>
                 </tr>
             </thead>
             <tbody data-t>
@@ -85,6 +85,12 @@
                 <% end %>
             </tbody>
         </table>
+
+        <%#ページネーション%>
+        <div class="mt-3">
+            <%= paginate @contents %>
+            <%= page_entries_info @contents %>
+        </div>
     </section>
 
 

@@ -11,4 +11,12 @@ class Content < ApplicationRecord
     validates :private, presence: true
     validates :private, length: {maximum: 1}
     validates :private, numericality: true
+
+    def self.ransackable_attributes(auth_object = nil)
+        %w[name url description category updated_at]
+    end
+
+    def self.ransackble_associations(auth_object = nil)
+        []
+    end
 end

@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user
 
+  def show
+    render "/users/edit"
+  end
+
   def edit
 
   end

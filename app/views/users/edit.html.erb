@@ -31,7 +31,6 @@
                             フォロワー
                         </div>
                         <div class="actions">
-                            <%= link_to '詳細編集', edit_user_registration_url, data_toggle: 'tooltip', data_placement: 'topdo', class: 'btn btn-secondary' %>
                             <%= f.button "変更", class: 'btn btn-secondary' %>
                         </div>
                     </div>
@@ -39,7 +38,11 @@
         </section>
     <% end %>
 </div>
- <%#SVG B====================%>
-    <%= link_to contents_path, data_toggle: 'tooltip', data_placement: 'topdo', title: '戻る'  do %>
-        <%= embedded_svg('back.svg', class: "plus")%>
+ <%#SVG Edit====================%>
+    <%= link_to edit_user_registration_url, data_toggle: 'tooltip', data_placement: 'topdo', title: '詳細編集'  do %>
+        <%= embedded_svg('edit.svg', class: "delete") %>
     <% end %>
+ <%#SVG B====================%>
+<%= link_to contents_path, data_toggle: 'tooltip', data_placement: 'topdo', title: '戻る'  do %>
+    <%= embedded_svg('back.svg', class: "plus") %>
+<% end %>

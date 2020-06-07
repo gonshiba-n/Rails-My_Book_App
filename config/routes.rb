@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     get "sign_out", :to => "users/sessions#destroy"
   end
 
-  resources :users, only: [:edit, :update]
+  resources :users, only: [:show, :edit, :update]
 
   resources :contents
   delete "contents" => "contents#select_destroy", as: 'select_destroy'

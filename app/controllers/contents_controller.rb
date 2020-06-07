@@ -3,7 +3,8 @@ class ContentsController < ApplicationController
   before_action :set_contents, only: [:show, :edit, :update, :destroy]
 
   def index
-    @contents = current_user.contents.recent
+		@q = current_user.contents.ransack(params[:q])
+		@contents = @q.result(distinct: true).page(params[:page]).per(10)
     count = 0
     @count = count
   end
@@ -21,7 +22,7 @@ class ContentsController < ApplicationController
   def create
     @content = current_user.contents.new(content_params)
     if @content.save
-      redirect_to contents_url, notice: "タイトル「#{@user.errors.full_messages}」を投稿しました"
+      redirect_to contents_url, notice: "タイトル「#{@content.name}」を投稿しました"
     else
       render :new
     end
