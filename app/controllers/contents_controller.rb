@@ -63,8 +63,8 @@ class ContentsController < ApplicationController
   end
 
   def select_content_params
-        ids = params.require(:content).permit(content_ids: [])
-        ids.values[0]
+    ids = params.require(:content).permit(content_ids: [])
+    ids.values[0]
   end
 
   def set_contents
