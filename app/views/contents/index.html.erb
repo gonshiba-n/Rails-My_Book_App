@@ -63,7 +63,7 @@
                     <tr>
                     <td>
                         <%= f.check_box :content_ids, {type: 'checkbox', class: 'checkbox-select', id: "checkbox#{@count}", multiple: true}, content.id %>
-                        <%= f.label :'', for: "checkbox#{@count}",class: 'select-label' %>
+                        <%= f.label :'', for: "checkbox#{@count}",class: 'select-label', id: "select_delete_label#{@count}" %>
                     </td>
                     <td> <%= link_to content.name, content %> </td>
                     <td> <%= link_to 'URL', content.url %> </td>

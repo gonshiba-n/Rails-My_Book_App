@@ -5,6 +5,8 @@ RSpec.describe "コンテンツ管理機能", type: :system do
     let(:user_a) {FactoryBot.create(:user, name: 'ユーザーA', email: 'a@example.com')}
     let(:user_b) {FactoryBot.create(:user, name: 'ユーザーB', email: 'b@example.com', password: 'password_b')}
     let!(:content_a) {FactoryBot.create(:content, name: '最初のコンテンツ', url: '最初のurl', user: user_a)}
+    let!(:content_b) {FactoryBot.create(:content, name: '2のコンテンツ', url: '2のurl', user: user_a)}
+    let!(:content_c) {FactoryBot.create(:content, name: '3のコンテンツ', url: '3のurl', user: user_a)}
 
     before do
         #ログイン画面へアクセス
@@ -39,6 +41,40 @@ RSpec.describe "コンテンツ管理機能", type: :system do
             end
         end
     end
+
+    describe "選択削除機能" do
+        let( :login_user ) { user_a }
+
+        before do
+            visit contents_path
+            find('#select_delete_label1').click
+            find('.delete').click
+            page.driver.browser.switch_to.alert.accept
+        end
+
+        context "選択して削除した時" do
+            before do
+                find('#select_delete_label1').click
+                find('.delete').click
+                page.driver.browser.switch_to.alert.accept
+            end
+
+            it "正常に削除される" do
+                expect(page).to have_selector '.alert-success', text: 'ブックマークを削除しました'
+            end
+        end
+
+        context "選択せず削除ボタンを押した時" do
+            before do
+                find('.delete').click
+                page.driver.browser.switch_to.alert.accept
+            end
+            it "正常に削除される" do
+                expect(page).to have_selector '.alert-success', text: '削除項目を選択してください'
+            end
+        end
+    end
+
 
     describe "詳細表示機能" do
         context "ユーザーAでログインしている時" do
