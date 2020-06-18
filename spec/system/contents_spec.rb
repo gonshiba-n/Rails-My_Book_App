@@ -9,15 +9,10 @@ RSpec.describe "Contents", type: :system do
     let!(:content_c) {FactoryBot.create(:content, name: '3のコンテンツ', url: '3のurl', user: user_a)}
 
     before do
-        #ログイン画面へアクセス
         visit new_user_session_path
-        #アカウント名を入力
         fill_in 'アカウント名', with: login_user.name
-        #メールアドレスを入力
         fill_in 'メールアドレス', with: login_user.email
-        #パスワードを入力
         fill_in 'パスワード', with: login_user.password
-        #ログインボタンを押す
         click_button 'Log in'
     end
 
@@ -25,6 +20,18 @@ RSpec.describe "Contents", type: :system do
         it {expect(page).to have_content '最初のコンテンツ'}
     end
 
+    describe "一覧要素表示検証" do
+        let( :login_user ) { user_a }
+        it "tablehead欄" do
+            expect(page).to have_selector '.search-box'
+            expect(page).to have_content '選択'
+            expect(page).to have_content 'タイトル'
+            expect(page).to have_content 'URL'
+            expect(page).to have_content '概要'
+            expect(page).to have_content 'カテゴリ'
+            expect(page).to have_content '日時'
+        end
+    end
 
     describe "一覧表示機能" do
         context "ユーザーAでログインしている時" do

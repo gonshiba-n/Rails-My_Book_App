@@ -3,15 +3,11 @@ class User < ApplicationRecord
   has_one_attached :user_image
   validate :validate_user_image
 
-    validates :name, presence: true
-    validates :name, length: {maximum: 35}
+  validates :name, presence: true
+  validates :name, length: {maximum: 35}
 
-    validates :introduction, length: {maximum: 160}
+  validates :introduction, length: {maximum: 160}
 
-
-    # validates :description, length: {maximum: 160}
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable
 
