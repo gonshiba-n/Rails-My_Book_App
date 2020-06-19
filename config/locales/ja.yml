@@ -23,7 +23,8 @@ ja:
     user:
   attributes:
     user:
-      user_image: ユーザー画像
+    user_image: ユーザー画像
+    introduction: ユーザープロフィール
   date:
     abbr_day_names:
     - 日

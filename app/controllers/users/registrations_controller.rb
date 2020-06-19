@@ -11,6 +11,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new
   end
 
+  def show
+    render :edit
+  end
+
   # POST /resource
   def create
     super

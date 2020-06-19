@@ -29,12 +29,48 @@ RSpec.describe "User", type: :system do
                 expect(page).to have_selector '.plus'
             end
         end
+    end
 
-        context "ユーザー詳細編集" do
+    describe "ユーザー情報編集" do
+        let(:login_user) {user_a}
+
+        before do
+        visit edit_user_path(user_a.id)
+        end
+
+        context "正常に編集された時" do
             before do
-                visit '/users/edit'
+                fill_in "user_name", with: "user_b"
+                fill_in "user_introduction", with: "よろしくお願いします"
+                click_button '変更'
             end
 
+            it "コンテンツ一覧ページにユーザー情報の変更が反映" do
+                expect(current_path).to eq contents_path
+                expect(page).to have_content 'user_b'
+                expect(page).to have_content 'よろしくお願いします'
+            end
+        end
+
+        context "変更不可" do
+            before do
+                fill_in "user_name", with: " "
+                fill_in "user_introduction", with: "#{'よろしくお願いします'*20}"
+                click_button '変更'
+            end
+            it "コンテンツ一覧ページにユーザー情報の変更が反映されない" do
+                expect(current_path).to eq "/users/#{user_a.id}"
+                expect(page).to have_content '名前を入力してください'
+                expect(page).to have_content 'ユーザープロフィールは160文字以内で入力してください'
+            end
+        end
+    end
+
+    describe "ユーザー詳細編集" do
+        before do
+            visit edit_user_registration_path(user_a.id)
+        end
+        describe "ユーザー詳細編集ページの要素表示" do
             it "ユーザー詳細編集ページの要素表示" do
                 expect(page).to have_field 'メールアドレス'
                 expect(page).to have_field 'パスワード'
@@ -45,35 +81,46 @@ RSpec.describe "User", type: :system do
             end
         end
 
-        describe "ユーザー情報編集" do
-            let(:login_user) {user_a}
-
-            before do
-            visit edit_user_path(user_a.id)
-            end
-
-            context "正常に編集された時" do
+        describe "ユーザー詳細編集機能" do
+            context "正常にパスワードとメールアドレスが更新" do
                 before do
-                    fill_in "user_name", with: "user_b"
-                    fill_in "user_introduction", with: "よろしくお願いします"
-                    click_button '変更'
+                    fill_in "メールアドレス",	with: "b@b.com"
+                    fill_in "パスワード",	with: "password_b"
+                    fill_in "確認用パスワード",	with: "password_b"
+                    fill_in "現在のパスワード",	with: "password"
+                    click_button '更新'
+                    if find(".navbar-toggler").click
+                        click_link 'ログアウト'
+                    else
+                        click_link 'ログアウト'
+                    end
+                    visit new_user_session_path
+                    fill_in 'アカウント名', with: login_user.name
+                    fill_in 'メールアドレス', with: "b@b.com"
+                    fill_in 'パスワード', with: "password_b"
+                    click_button 'Log in'
+                end
+                it "正常に更新される" do
+                    sleep 0.5
+                    expect(current_path).to eq contents_path(user_a.id)
                 end
 
-                it "コンテンツ一覧ページにユーザー情報の変更が反映" do
-                    expect(current_path).to eq contents_path
-                    expect(page).to have_content 'user_b'
-                    expect(page).to have_content 'よろしくお願いします'
+                context "パスワードとメールアドレスが更新されない" do
+                    before do
+                        visit edit_user_registration_path(user_a.id)
+                        fill_in "メールアドレス", with: " "
+                        fill_in "パスワード", with: " "
+                        fill_in "確認用パスワード",	with: " "
+                        fill_in "現在のパスワード",	with: " "
+                        click_button '更新'
+                    end
+                    it "更新されない" do
+                        expect(current_path).to eq '/users'
+                        expect(page).to have_content 'メールアドレスが入力されていません'
+                        expect(page).to have_content '現在のパスワードを入力してください'
+                    end
                 end
-            end
-
-            context "変更不可" do
-                it "コンテンツ一覧ページにユーザー情報の変更が反映されない" do
-                    
-                end
-                
             end
         end
-        
     end
-    
 end
