@@ -12,7 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def show
-    render :edit
+    super
   end
 
   # POST /resource

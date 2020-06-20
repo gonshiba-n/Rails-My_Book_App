@@ -55,7 +55,7 @@ RSpec.describe "User", type: :system do
         context "変更不可" do
             before do
                 fill_in "user_name", with: " "
-                fill_in "user_introduction", with: "#{'よろしくお願いします'*20}"
+                fill_in "user_introduction", with: 'あ' * 161
                 click_button '変更'
             end
             it "コンテンツ一覧ページにユーザー情報の変更が反映されない" do

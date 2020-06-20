@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :contents
   has_one_attached :user_image
+
   validate :validate_user_image
 
   validates :name, presence: true
@@ -27,6 +28,4 @@ class User < ApplicationRecord
   def image?
     %w[image/jpg image/jpeg image/gif image/png].include?(user_image.blob.content_type)
   end
-
-
 end
