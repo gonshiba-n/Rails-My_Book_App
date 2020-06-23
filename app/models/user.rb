@@ -10,11 +10,11 @@ class User < ApplicationRecord
   validates :introduction, length: { maximum: 160 }
 
   devise :database_authenticatable,
-          :registerable,
-          :recoverable,
-          :rememberable,
-          :validatable,
-          :confirmable
+         :registerable,
+         :recoverable,
+         :rememberable,
+         :validatable,
+         :confirmable
 
   def validate_user_image
     return unless user_image.attached? # ファイルがアタッチされていない場合は何もしない
