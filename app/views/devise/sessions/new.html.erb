@@ -37,7 +37,8 @@
       </div>
     <% end %>
 
-    <%= render "devise/shared/links" %>
+    <%= link_to "新規登録", root_path, class: 'd-block' %>
+    <%= link_to "パスワードをお忘れの方", new_user_password_path, class: 'd-block' %>
     </div>
   </div>
 </section>

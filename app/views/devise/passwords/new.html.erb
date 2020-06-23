@@ -1,16 +1,31 @@
-<h2>Forgot your password?</h2>
+<section class="index">
+  <div class="row py-3">
+    <div class="col-md-8 password-new mx-auto" style="max-width:600px">
+      <h2>パスワードの再設定</h2>
+      <p>メールアドレスを入力して「メールを送信」を押してしてください。<br>
+        パスワード再設定へのご案内をお送りします。</p>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <div class="form-group mt-3">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+        </div>
+
+        <div class="row send my-4">
+          <p>I'll send <br>you an email...</p>
+          <%= embedded_svg('send.svg', class: 'send-logo')%>
+        </div>
+
+        <div class="actions mt-3">
+          <%= f.submit "メールを送信",class: 'btn btn-primary p-2' %>
+        </div>
+      <% end %>
+
+      <%= link_to root_path, data_toggle: 'tooltip', data_placement: 'topdo', title: 'TOP'  do %>
+          <%= embedded_svg('timeline.svg', class: "top")%>
+      <% end %>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</section>

@@ -13,12 +13,12 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to contents_url, notice: "ユーザープロファイルを更新しました"
     else
-      
-        render :edit
+      render :edit
     end
   end
 
   private
+
   def set_user
     @user = current_user
   end
@@ -26,5 +26,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:session).permit(:name, :introduction, :user_image)
   end
-
 end

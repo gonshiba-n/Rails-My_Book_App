@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "User", type: :system do
-    let!(:user_a) {FactoryBot.create(:user)}
-    let(:login_user) {user_a}
+    let!(:user_a) { FactoryBot.create(:user) }
+    let(:login_user) { user_a }
 
     before do
         visit new_user_session_path
@@ -13,11 +13,12 @@ RSpec.describe "User", type: :system do
     end
 
     describe "ユーザー情報編集要素" do
-        let(:login_user) {user_a}
+        let(:login_user) { user_a }
 
         before do
         visit edit_user_path(user_a.id)
         end
+
         context "ユーザー編集" do
             it "ユーザー情報編集要素の表示" do
                 expect(page).to have_selector '.form-control-file'
@@ -32,7 +33,7 @@ RSpec.describe "User", type: :system do
     end
 
     describe "ユーザー情報編集" do
-        let(:login_user) {user_a}
+        let(:login_user) { user_a }
 
         before do
         visit edit_user_path(user_a.id)
@@ -58,6 +59,7 @@ RSpec.describe "User", type: :system do
                 fill_in "user_introduction", with: 'あ' * 161
                 click_button '変更'
             end
+
             it "コンテンツ一覧ページにユーザー情報の変更が反映されない" do
                 expect(current_path).to eq "/users/#{user_a.id}"
                 expect(page).to have_content '名前を入力してください'
@@ -70,6 +72,7 @@ RSpec.describe "User", type: :system do
         before do
             visit edit_user_registration_path(user_a.id)
         end
+
         describe "ユーザー詳細編集ページの要素表示" do
             it "ユーザー詳細編集ページの要素表示" do
                 expect(page).to have_field 'メールアドレス'
@@ -84,10 +87,10 @@ RSpec.describe "User", type: :system do
         describe "ユーザー詳細編集機能" do
             context "正常にパスワードとメールアドレスが更新" do
                 before do
-                    fill_in "メールアドレス",	with: "b@b.com"
-                    fill_in "パスワード",	with: "password_b"
-                    fill_in "確認用パスワード",	with: "password_b"
-                    fill_in "現在のパスワード",	with: "password"
+                    fill_in "メールアドレス", with: "b@b.com"
+                    fill_in "パスワード", with: "password_b"
+                    fill_in "確認用パスワード",  with: "password_b"
+                    fill_in "現在のパスワード",  with: "password"
                     click_button '更新'
                     if find(".navbar-toggler").click
                         click_link 'ログアウト'
@@ -100,6 +103,7 @@ RSpec.describe "User", type: :system do
                     fill_in 'パスワード', with: "password_b"
                     click_button 'Log in'
                 end
+
                 it "正常に更新される" do
                     sleep 0.5
                     expect(current_path).to eq contents_path(user_a.id)
@@ -110,10 +114,11 @@ RSpec.describe "User", type: :system do
                         visit edit_user_registration_path(user_a.id)
                         fill_in "メールアドレス", with: " "
                         fill_in "パスワード", with: " "
-                        fill_in "確認用パスワード",	with: " "
-                        fill_in "現在のパスワード",	with: " "
+                        fill_in "確認用パスワード",  with: " "
+                        fill_in "現在のパスワード",  with: " "
                         click_button '更新'
                     end
+
                     it "更新されない" do
                         expect(current_path).to eq '/users'
                         expect(page).to have_content 'メールアドレスが入力されていません'

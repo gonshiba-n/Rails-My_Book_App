@@ -5,12 +5,16 @@ class User < ApplicationRecord
   validate :validate_user_image
 
   validates :name, presence: true
-  validates :name, length: {maximum: 35}
+  validates :name, length: { maximum: 35 }
 
-  validates :introduction, length: {maximum: 160}
+  validates :introduction, length: { maximum: 160 }
 
-  devise :database_authenticatable, :registerable,
-        :recoverable, :rememberable, :validatable
+  devise :database_authenticatable,
+          :registerable,
+          :recoverable,
+          :rememberable,
+          :validatable,
+          :confirmable
 
   def validate_user_image
     return unless user_image.attached? # ファイルがアタッチされていない場合は何もしない
@@ -26,6 +30,6 @@ class User < ApplicationRecord
   private
 
   def image?
-    %w[image/jpg image/jpeg image/gif image/png].include?(user_image.blob.content_type)
+    %w(image/jpg image/jpeg image/gif image/png).include?(user_image.blob.content_type)
   end
 end

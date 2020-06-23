@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "before_and_after_login", type: :system do
-    let!(:user_a) {FactoryBot.create(:user)}
-    let(:login_user) {user_a}
+    let!(:user_a) { FactoryBot.create(:user) }
+    let(:login_user) { user_a }
 
     describe "ログイン前後でnavの表示が変更されている" do
         before do

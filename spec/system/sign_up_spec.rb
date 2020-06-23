@@ -4,8 +4,8 @@ RSpec.describe "User", type: :system do
     before do
         visit root_path
     end
-    describe "サインインページ要素検証" do
 
+    describe "サインインページ要素検証" do
         it "入力要素が表示されている" do
             expect(page).to have_selector 'h1.card-title', text: 'アカウント登録'
             expect(page).to have_field 'アカウント名'
@@ -42,7 +42,6 @@ RSpec.describe "User", type: :system do
             expect(page).to have_content 'メールアドレスが入力されていません。'
             expect(page).to have_content '確認用パスワードとパスワードの入力が一致しません'
             expect(page).to have_content 'パスワードは6文字以上に設定して下さい。'
-
         end
     end
 

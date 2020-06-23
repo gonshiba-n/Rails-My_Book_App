@@ -1,10 +1,9 @@
 class ContentsController < ApplicationController
-
   before_action :set_contents, only: [:show, :edit, :update, :destroy]
 
   def index
-		@q = current_user.contents.ransack(params[:q])
-		@contents = @q.result(distinct: true).page(params[:page]).per(10)
+    @q = current_user.contents.ransack(params[:q])
+    @contents = @q.result(distinct: true).page(params[:page]).per(10)
     count = 0
     @count = count
   end
@@ -43,18 +42,17 @@ class ContentsController < ApplicationController
       redirect_to contents_url, notice: "削除項目を選択してください"
     else
       select = []
-      select_content_params.map{|n|
+      select_content_params.map { |n|
         select << n
         select.delete("0")
       }
-        select.each{|id|
+        select.each { |id|
           content = Content.find(id)
           content.destroy
         }
       redirect_to contents_url, notice: "ブックマークを削除しました"
     end
   end
-
 
   private
 
@@ -70,5 +68,4 @@ class ContentsController < ApplicationController
   def set_contents
     @content = current_user.contents.find(params[:id])
   end
-
 end

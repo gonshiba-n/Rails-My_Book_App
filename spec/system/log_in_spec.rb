@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "User", type: :system do
-    let!(:user_a) {FactoryBot.create(:user)}
-    let(:login_user) {user_a}
+    let!(:user_a) { FactoryBot.create(:user) }
+    let(:login_user) { user_a }
+
     before do
         visit new_user_session_path
     end
@@ -22,6 +23,7 @@ RSpec.describe "User", type: :system do
         before do
             visit new_user_session_path
         end
+
         it "正常にログイン" do
             fill_in 'アカウント名', with: user_a.name
             fill_in 'メールアドレス', with: user_a.email

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Content, type: :model do
-  let!(:content_a){FactoryBot.create :content}
+  let!(:content_a) { FactoryBot.create :content }
 
   describe "バリデーション" do
     it "有効な状態であること" do
@@ -15,7 +15,7 @@ RSpec.describe Content, type: :model do
     end
 
     it "名前が35文字以内であること" do
-      content = build(:content, name: "a"*36)
+      content = build(:content, name: "a" * 36)
       content.valid?
       expect(content.errors[:name]).to include('は35文字以内で入力してください')
     end
