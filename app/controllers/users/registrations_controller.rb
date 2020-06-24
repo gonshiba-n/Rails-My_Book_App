@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :configure_sign_up_params, only: [:new, :create, :show]
+  before_action :configure_sign_up_params, only: [:new, :create, :show, :update]
   before_action :configure_sign_up_params, if: :devise_controller?
 
   # GET /resource/sign_up

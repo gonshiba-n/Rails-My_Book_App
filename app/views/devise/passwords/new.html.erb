@@ -9,8 +9,8 @@
         <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="form-group mt-3">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+          <%= f.label :email, for: 'email' %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', id: 'email' %>
         </div>
 
         <div class="row send my-4">
