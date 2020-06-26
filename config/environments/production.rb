@@ -64,6 +64,18 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "MyBook_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
+  config.action_mailer.default_url_options = { :host => 'https://mybook-gn.herokuapp.com' }
+
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.smtp_settings = {
+      :user_name => "app175744564@heroku.com",
+      :password => "1c5yhbaf7160",
+      :domain => "heroku.com",
+      :address => "smtp.sendgrid.net",
+      :port => 587,
+      :authentication => :plain,
+      :enable_starttls_auto => true
+  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
