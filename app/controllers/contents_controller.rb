@@ -28,13 +28,19 @@ class ContentsController < ApplicationController
   end
 
   def update
-    @content.update!(content_params)
+    if @content.update(content_params)
     redirect_to contents_url, notice: "タイトル「#{@content.name}」を更新しました"
+    else
+      render :edit
+    end
   end
 
   def destroy
-    @content.destroy
-    redirect_to contents_url, notice: "タイトル「#{@content.name}」を削除しました"
+    if @content.destroy
+      redirect_to contents_url, notice: "タイトル「#{@content.name}」を削除しました"
+    else
+      render :show
+    end
   end
 
   def select_destroy
