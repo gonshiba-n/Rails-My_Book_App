@@ -83,6 +83,3 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: 5
-  database: MyBook_production
-  username: MyBook
-  password: <%= ENV['MYBOOK_DATABASE_PASSWORD'] %>
