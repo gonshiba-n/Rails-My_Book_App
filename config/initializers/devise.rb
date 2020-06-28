@@ -8,7 +8,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '81f02667e44378353202f821f8fa39bcf974b007eab4ec564be7d412fb95aa0007043a3f7ed5f3598b39133972d6fc3969cbf4bf5a4e76cee3ab0d9a6aeb7b53'
+  config.secret_key = '81f02667e44378353202f821f8fa39bcf974b007eab4ec564be7d412fb95aa0007043a3f7ed5f3598b39133972d6fc3969cbf4bf5a4e76cee3ab0d9a6aeb7b53'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -212,7 +212,7 @@ Devise.setup do |config|
   # Time interval you can reset your password with a reset password key.
   # Don't put a too small interval or your users won't have the time to
   # change their passwords.
-  config.reset_password_within = 6.hours
+  config.reset_password_within = 24.hours
 
   # When set to false, does not sign a user in automatically after their password is
   # reset. Defaults to true, so a user is signed in automatically after a reset.
