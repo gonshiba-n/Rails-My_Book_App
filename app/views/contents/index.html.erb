@@ -11,11 +11,11 @@
     <section>
         <div class="row user-profile">
             <div class="col-md-3">
-                <%# if current_user.user_image.attached? %>
-                    <%#= image_tag current_user.user_image.variant(resize:'200x200',border:'10').processed, class: 'user_image' %>
-                <%# else %>
-                    <%#= image_tag("user_default.jpeg", :size => "150x150",class: 'default_image') %>
-                <%# end %>
+                <% if current_user.user_image.attached? %>
+                    <%= image_tag current_user.user_image.variant(resize:'200x200',border:'10').processed, class: 'user_image' %>
+                <% else %>
+                    <%= image_tag("user_default.jpeg", :size => "150x150",class: 'default_image') %>
+                <% end %>
             </div>
             <div class="col-md-8 user-discription">
                 <h2><%= current_user.name %></h2>
