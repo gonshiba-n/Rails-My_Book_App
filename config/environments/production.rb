@@ -70,13 +70,13 @@ Rails.application.configure do
 
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.smtp_settings = {
-      :user_name => ENV["MAILER_NAME"],
-      :password => ENV["MAILER_PASSWORD"],
-      :domain => "heroku.com",
-      :address => "smtp.sendgrid.net",
-      :port => 587,
-      :authentication => :plain,
-      :enable_starttls_auto => true
+    :user_name => ENV["MAILER_NAME"],
+    :password => ENV["MAILER_PASSWORD"],
+    :domain => "heroku.com",
+    :address => "smtp.sendgrid.net",
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
   }
 
   # Ignore bad email addresses and do not raise email delivery errors.
