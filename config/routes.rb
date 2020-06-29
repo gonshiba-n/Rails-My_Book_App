@@ -14,8 +14,8 @@ Rails.application.routes.draw do
     get "users" => "users/registrations#edit"
   end
 
-  resources :users, only: [:show, :edit, :update]
-
-  resources :contents
-  delete "contents" => "contents#select_destroy", as: 'select_destroy'
+  resources :users, only: [:show, :edit, :update] do
+    resources :contents
+    delete "contents" => "contents#select_destroy", as: 'select_destroy'
+  end
 end

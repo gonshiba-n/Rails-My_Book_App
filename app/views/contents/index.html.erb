@@ -35,12 +35,12 @@
 
  <%#検索=============================%>
     <section class="search-section">
-				<%= search_form_for @q do |f| %>
-						<%= f.search_field :name_or_description_or_category_cont, id: 'search-box', class: 'search-box' %>
-						<%= f.label :name, for: 'search-box' do %>
+			<%= search_form_for @q , url: user_contents_path do |f| %>
+					<%= f.search_field :name_or_description_or_category_cont, id: 'search-box', class: 'search-box' %>
+					<%= f.label :name, for: 'search-box' do %>
                 <i class="fas fa-search search-icon"></i>
             <% end %>
-						<%= f.submit "検索", id: 'search-submit' %>
+			<%= f.submit "検索", id: 'search-submit' %>
         <% end %>
     </section>
  <%#テーブル=============================%>
@@ -57,31 +57,32 @@
                 </tr>
             </thead>
             <tbody data-t>
-                <%= form_with model: @contents, url: contents_path, method: :delete, local: true do |f| %>
-                    <% @contents.each do |content| %>
-                    <% @count += 1%>
-                    <tr>
-                    <td>
-                        <%= f.check_box :content_ids, {type: 'checkbox', class: 'checkbox-select', id: "checkbox#{@count}", multiple: true}, content.id %>
-                        <%= f.label :'', for: "checkbox#{@count}",class: 'select-label', id: "select_delete_label#{@count}" %>
-                    </td>
-                    <td> <%= link_to content.name, content %> </td>
-                    <td> <%= link_to 'URL', content.url %> </td>
-                    <%#概要は空白の場合の処理も記載%>
-                    <td><%= link_to content.description.blank? ? 'None' : content.description, content %></td>
+                <%= form_with model: [@users, @contents], url: user_contents_path, method: :delete, local: true do |f| %>
+                    <% @user.each do |user| %>
+                        <% @contents.each do |content| %>
+                        <% @count += 1%>
+                        <tr>
+                        <td>
+                            <%= f.check_box :content_ids, {type: 'checkbox', class: 'checkbox-select', id: "checkbox#{@count}", multiple: true}, content.id %>
+                            <%= f.label :'', for: "checkbox#{@count}",class: 'select-label', id: "select_delete_label#{@count}" %>
+                        </td>
+                        <td> <%= link_to content.name, user_content_path(user, content) %> </td>
+                        <td> <%= link_to 'URL', content.url %> </td>
+                        <%#概要は空白の場合の処理も記載%>
+                        <td><%= link_to content.description.blank? ? 'None' : content.description, user_content_path(user, content) %></td>
 
 
-                    <%#カテゴリーは空白の場合の処理も記載%>
-                    <td><%= link_to content.category.blank? ? 'None' : content.category, content %></td>
-                    <td><%= link_to content.updated_at.to_s(:datetime_jp), content %></td>
-                    </tr>
+                        <%#カテゴリーは空白の場合の処理も記載%>
+                        <td><%= link_to content.category.blank? ? 'None' : content.category, user_content_path(user, content) %></td>
+                        <td><%= link_to content.updated_at.to_s(:datetime_jp), user_content_path(user, content) %></td>
+                        </tr>
+                        <% end %>
                     <% end %>
 
                     <%#SVG Delete==========================%>
-                    <%= f.button select_destroy_path, method: :delete,  data_toggle: 'tooltip', data_placement: 'topdo', title: '削除',data: {confirm: "ブックマークを削除します"},class: 'select_submit' do %>
+                    <%= f.button user_select_destroy_path, method: :delete,  data_toggle: 'tooltip', data_placement: 'topdo', title: '削除',data: {confirm: "ブックマークを削除します"},class: 'select_submit',local: true do %>
                         <%= embedded_svg('delete.svg', class: "delete")%>
                     <% end %>
-
                 <% end %>
             </tbody>
         </table>
@@ -94,13 +95,13 @@
 
 
  <%#SVG +==========================%>
-    <%= link_to new_content_path, data_toggle: 'tooltip', data_placement: 'topdo', title: '新規作成' do %>
+    <%= link_to new_user_content_path, data_toggle: 'tooltip', data_placement: 'topdo', title: '新規作成' do %>
         <%= embedded_svg('plus.svg', class: "plus")%>
     <% end %>
 
  <%#SVG T====================%>
  <%#SVG Timeline機能未実装====================%>
-    <%= link_to new_content_path, data_toggle: 'tooltip', data_placement: 'topdo', title: 'タイムライン'  do %>
+    <%= link_to new_user_content_path, data_toggle: 'tooltip', data_placement: 'topdo', title: 'タイムライン'  do %>
         <%= embedded_svg('timeline.svg', class: "timeline")%>
     <% end %>
 </div>

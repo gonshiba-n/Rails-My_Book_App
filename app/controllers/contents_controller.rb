@@ -2,6 +2,8 @@ class ContentsController < ApplicationController
   before_action :set_contents, only: [:show, :edit, :update, :destroy]
 
   def index
+    @user = User.all
+    @contents = Content.all
     @q = current_user.contents.ransack(params[:q])
     @contents = @q.result(distinct: true).page(params[:page]).per(10)
     count = 0
@@ -12,6 +14,7 @@ class ContentsController < ApplicationController
   end
 
   def edit
+
   end
 
   def new
@@ -21,7 +24,7 @@ class ContentsController < ApplicationController
   def create
     @content = current_user.contents.new(content_params)
     if @content.save
-      redirect_to contents_url, notice: "タイトル「#{@content.name}」を投稿しました"
+      redirect_to user_contents_url, notice: "タイトル「#{@content.name}」を投稿しました"
     else
       render :new
     end
@@ -29,23 +32,32 @@ class ContentsController < ApplicationController
 
   def update
     if @content.update(content_params)
+<<<<<<< Updated upstream
     redirect_to contents_url, notice: "タイトル「#{@content.name}」を更新しました"
+=======
+      redirect_to user_contents_url, notice: "タイトル「#{@content.name}」を更新しました"
+>>>>>>> Stashed changes
     else
       render :edit
     end
   end
 
   def destroy
+<<<<<<< Updated upstream
     if @content.destroy
       redirect_to contents_url, notice: "タイトル「#{@content.name}」を削除しました"
     else
       render :show
     end
+=======
+    @content.destroy
+    redirect_to user_contents_url, notice: "タイトル「#{@content.name}」を削除しました"
+>>>>>>> Stashed changes
   end
 
   def select_destroy
-    if select_content_params.uniq.count == 1
-      redirect_to contents_url, notice: "削除項目を選択してください"
+    if  select_content_params == nil || select_content_params.uniq.count == 1
+      redirect_to user_contents_url, notice: "削除項目を選択してください"
     else
       select = []
       select_content_params.map { |n|
@@ -56,19 +68,20 @@ class ContentsController < ApplicationController
           content = Content.find(id)
           content.destroy
         }
-      redirect_to contents_url, notice: "ブックマークを削除しました"
+      redirect_to user_contents_path, notice: "ブックマークを削除しました"
     end
   end
 
   private
 
   def content_params
-    params.require(:content).permit(:name, :url, :description, :category, :private)
+    params.require(:content).permit(:id, :name, :url, :description, :category, :private)
   end
 
   def select_content_params
     ids = params.require(:content).permit(content_ids: [])
     ids.values[0]
+    rescue => select_destroy
   end
 
   def set_contents

@@ -28,7 +28,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   def update
-    super
+    super do
+      resource.skip_reconfirmation!
+      resource.save
+    end
   end
 
   # DELETE /resource
