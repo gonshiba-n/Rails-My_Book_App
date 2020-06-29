@@ -11,6 +11,7 @@ class ContentsController < ApplicationController
   end
 
   def show
+
   end
 
   def edit
@@ -32,27 +33,18 @@ class ContentsController < ApplicationController
 
   def update
     if @content.update(content_params)
-<<<<<<< Updated upstream
-    redirect_to contents_url, notice: "タイトル「#{@content.name}」を更新しました"
-=======
       redirect_to user_contents_url, notice: "タイトル「#{@content.name}」を更新しました"
->>>>>>> Stashed changes
     else
       render :edit
     end
   end
 
   def destroy
-<<<<<<< Updated upstream
     if @content.destroy
-      redirect_to contents_url, notice: "タイトル「#{@content.name}」を削除しました"
+    redirect_to user_contents_url, notice: "タイトル「#{@content.name}」を削除しました"
     else
       render :show
     end
-=======
-    @content.destroy
-    redirect_to user_contents_url, notice: "タイトル「#{@content.name}」を削除しました"
->>>>>>> Stashed changes
   end
 
   def select_destroy
