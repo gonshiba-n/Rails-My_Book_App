@@ -58,7 +58,6 @@
             </thead>
             <tbody data-t>
                 <%= form_with model: [@users, @contents], url: user_contents_path, method: :delete, local: true do |f| %>
-                    <%# @user.each do |user| %>
                         <% @contents.each do |content| %>
                         <% @count += 1%>
                         <tr>
@@ -77,7 +76,6 @@
                         <td><%= link_to content.updated_at.to_s(:datetime_jp), user_content_path(@user, content) %></td>
                         </tr>
                         <% end %>
-                    <%# end %>
 
                     <%#SVG Delete==========================%>
                     <%= f.button user_select_destroy_path, method: :delete,  data_toggle: 'tooltip', data_placement: 'topdo', title: '削除',data: {confirm: "ブックマークを削除します"},class: 'select_submit',local: true do %>
