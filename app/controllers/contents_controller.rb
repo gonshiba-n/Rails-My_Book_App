@@ -3,7 +3,6 @@ class ContentsController < ApplicationController
 
   def index
     @user = User.all
-    @contents = Content.all
     @q = current_user.contents.ransack(params[:q])
     @contents = @q.result(distinct: true).page(params[:page]).per(10)
     count = 0
