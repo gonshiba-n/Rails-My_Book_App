@@ -3,5 +3,17 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+# movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+
+users = [
+		{name: '採用ご担当者様',
+			email: 'recruit@example.com',
+			password: 'password',
+			introduction: 'ご覧頂き、誠にありがとうございます。ご査収の程、よろしくお願い致します。'}
+	]
+users.each do |record|
+  User.create!(record) unless User.find_by(email: record[:email])
+end
