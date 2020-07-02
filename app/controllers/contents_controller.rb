@@ -45,7 +45,7 @@ class ContentsController < ApplicationController
   end
 
   def select_destroy
-    if select_content_params.nil? || select_content_params.uniq.count == 1
+    if params[:content].nil? || select_content_params.uniq.count == 1
       redirect_to user_contents_url, notice: "削除項目を選択してください"
     else
       select = []
@@ -68,9 +68,10 @@ class ContentsController < ApplicationController
   end
 
   def select_content_params
+    if params[:content]
       ids = params.require(:content).permit(content_ids: [])
       ids.values[0]
-  rescue => select_destroy
+    end
   end
 
   def set_contents
