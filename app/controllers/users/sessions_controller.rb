@@ -29,8 +29,6 @@ class Users::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
-  private
-
   # def recruiter_params
   #   params.require(:id).permit(:id)
   # end
