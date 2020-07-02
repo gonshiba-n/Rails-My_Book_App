@@ -2,13 +2,69 @@
     <section class="content_box">
         <h2>新規ブックマーク<i class="fas fa-book-open"></i></h2>
 
-        <%= render partial: 'form', locals: {content: @content} %>
+        <% if @content.errors.present? %>
+            <ul> <%# エラー内容出力 %>
+                <% @content.errors.full_messages.each do |message| %>
+                    <li class="errors-val"><%= message %></li>
+                <% end %>
+            </ul>
+        <% end %>
+
+        <%= form_with model: @content, url: user_contents_path, local: true do |f| %>
+            <div class="form-group">
+                <%= f.label :name, 'タイトル' %>
+                <%= f.text_field :name, class: 'form-control', id: 'content_name', placeholder: '投稿名を入力してください' %>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :url,'URL' %>
+                <%= f.text_field :url, class: 'form-control', id: 'content_url', placeholder: 'URLを入力してください' %>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :description, '投稿説明' %>
+                <%= f.text_area :description, rows: 3, class: 'form-control', id: 'content_description' %>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :category, "カテゴリー" %>
+                <%= f.text_field :category, class: 'form-control', id: 'content_category', placeholder: 'カテゴリーを入力して下さい' %>
+            </div>
+            <%#アコーディオン(オプション設定)=================%>
+            <div class="accordion" id="accordionExample">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                        <button class="btn add-choice" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            + 追加の設定
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <%= f.label :tag, "タグ" %>
+                            <%= f.text_field :tag, class: 'form-control', id: 'content_tag', placeholder: '#タグを入力してください' %>
+                        </div>
+                        <div class="form-group">
+                            <%= f.label :private, "投稿公開範囲" %>
+                            <%= f.select :private,[
+                                ["1.全てのユーザーに投稿を公開", 1],
+                                ["2.フォロー、フォロワーのみに投稿を公開", 2],
+                                ["3.非公開", 3]],{},
+                                class:'form-control private-select', id: 'content_private'
+                            %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%= f.button '投稿する', class: 'btn' %>
+        <% end %>
     </section>
 
-
-
     <%#SVG B====================%>
-    <%= link_to contents_path, data_toggle: 'tooltip', data_placement: 'topdo', title: '戻る'  do %>
+    <%= link_to user_contents_path, data_toggle: 'tooltip', data_placement: 'topdo', title: '戻る'  do %>
         <%= embedded_svg('back.svg', class: "plus")%>
     <% end %>
 </div>

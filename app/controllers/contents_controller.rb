@@ -2,6 +2,7 @@ class ContentsController < ApplicationController
   before_action :set_contents, only: [:show, :edit, :update, :destroy]
 
   def index
+    @user = User.all
     @q = current_user.contents.ransack(params[:q])
     @contents = @q.result(distinct: true).page(params[:page]).per(10)
     count = 0
@@ -21,25 +22,31 @@ class ContentsController < ApplicationController
   def create
     @content = current_user.contents.new(content_params)
     if @content.save
-      redirect_to contents_url, notice: "タイトル「#{@content.name}」を投稿しました"
+      redirect_to user_contents_url, notice: "タイトル「#{@content.name}」を投稿しました"
     else
       render :new
     end
   end
 
   def update
-    @content.update!(content_params)
-    redirect_to contents_url, notice: "タイトル「#{@content.name}」を更新しました"
+    if @content.update(content_params)
+      redirect_to user_contents_url, notice: "タイトル「#{@content.name}」を更新しました"
+    else
+      render :edit
+    end
   end
 
   def destroy
-    @content.destroy
-    redirect_to contents_url, notice: "タイトル「#{@content.name}」を削除しました"
+    if @content.destroy
+    redirect_to user_contents_url, notice: "タイトル「#{@content.name}」を削除しました"
+    else
+      render :show
+    end
   end
 
   def select_destroy
-    if select_content_params.uniq.count == 1
-      redirect_to contents_url, notice: "削除項目を選択してください"
+    if select_content_params.nil? || select_content_params.uniq.count == 1
+      redirect_to user_contents_url, notice: "削除項目を選択してください"
     else
       select = []
       select_content_params.map { |n|
@@ -50,19 +57,20 @@ class ContentsController < ApplicationController
           content = Content.find(id)
           content.destroy
         }
-      redirect_to contents_url, notice: "ブックマークを削除しました"
+      redirect_to user_contents_path, notice: "ブックマークを削除しました"
     end
   end
 
   private
 
   def content_params
-    params.require(:content).permit(:name, :url, :description, :category, :private)
+    params.require(:content).permit(:id, :name, :url, :description, :category, :private)
   end
 
   def select_content_params
-    ids = params.require(:content).permit(content_ids: [])
-    ids.values[0]
+      ids = params.require(:content).permit(content_ids: [])
+      ids.values[0]
+  rescue => select_destroy
   end
 
   def set_contents

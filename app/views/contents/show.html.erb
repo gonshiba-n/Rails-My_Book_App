@@ -30,14 +30,6 @@
                             end %></td>
                 </tr>
                 <tr>
-                    <th> イメージ </th>
-                    <td> <%=  if @content.image_name.blank?
-                                '未実装'
-                            else
-                                @content.image_name
-                            end %></td>
-                </tr>
-                <tr>
                     <th> タグ </th>
                     <td> 未実装 </td>
                 </tr>
@@ -66,15 +58,15 @@
 
 
  <%#SVG B====================%>
-    <%= link_to contents_path, data_toggle: 'tooltip', data_placement: 'topdo', title: '戻る'  do %>
+    <%= link_to user_contents_path, data_toggle: 'tooltip', data_placement: 'topdo', title: '戻る'  do %>
         <%= embedded_svg('back.svg', class: "plus")%>
     <% end %>
  <%#SVG Delete==========================%>
-    <%= link_to content_path, method: :delete, data_toggle: 'tooltip', data_placement: 'topdo', title: '削除',data: {confirm: "ブックマークを削除します"} do %>
+    <%= link_to user_content_path, method: :delete, data_toggle: 'tooltip', data_placement: 'topdo', title: '削除',data: {confirm: "ブックマークを削除します"} do %>
         <%= embedded_svg('delete.svg', class: "delete")%>
     <% end %>
  <%#SVG Edit====================%>
-    <%= link_to edit_content_path, data_toggle: 'tooltip', data_placement: 'topdo', title: '投稿編集'  do %>
+    <%= link_to edit_user_content_path, data_toggle: 'tooltip', data_placement: 'topdo', title: '投稿編集'  do %>
         <%= embedded_svg('edit.svg', class: "timeline")%>
     <% end %>
 </div>

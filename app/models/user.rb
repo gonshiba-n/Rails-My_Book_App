@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_many :contents
-  has_one_attached :user_image
+  has_many :contents, dependent: :destroy
+  has_one_attached :user_image, dependent: :destroy
 
   validate :validate_user_image
 

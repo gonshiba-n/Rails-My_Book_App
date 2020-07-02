@@ -43,6 +43,6 @@
         <%= embedded_svg('edit.svg', class: "delete") %>
     <% end %>
  <%#SVG B====================%>
-<%= link_to contents_path, data_toggle: 'tooltip', data_placement: 'topdo', title: '戻る'  do %>
+<%= link_to user_contents_path(current_user.id), data_toggle: 'tooltip', data_placement: 'topdo', title: '戻る'  do %>
     <%= embedded_svg('back.svg', class: "plus") %>
 <% end %>

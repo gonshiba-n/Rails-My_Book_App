@@ -6,8 +6,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-    super
-    @user = User.new
   end
 
   def show
@@ -17,8 +15,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super do
-    resource.skip_confirmation!
-    resource.save
+      resource.skip_confirmation!
+      resource.save
     end
   end
 
@@ -29,7 +27,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   def update
-    super
+    super do
+      resource.skip_reconfirmation!
+      resource.save
+    end
   end
 
   # DELETE /resource
