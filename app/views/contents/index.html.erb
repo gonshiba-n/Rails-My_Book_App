@@ -75,7 +75,7 @@
                         <td><%= link_to content.category.blank? ? 'None' : content.category, user_content_path(@user, content) %></td>
                         <td><%= link_to content.updated_at.to_s(:datetime_jp), user_content_path(@user, content) %></td>
                         </tr>
-                        <% end %>
+                    <% end %>
 
                     <%#SVG Delete==========================%>
                     <%= f.button user_select_destroy_path, method: :delete,  data_toggle: 'tooltip', data_placement: 'topdo', title: '削除',data: {confirm: "ブックマークを削除します"},class: 'select_submit',local: true do %>
