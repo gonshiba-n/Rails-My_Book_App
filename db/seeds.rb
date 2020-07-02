@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-
+# 採用ご担当者様用データ=============================================================
 recruiter = [
 	{
 	id: 1,
@@ -32,3 +32,17 @@ Content.create!(
 		user_id: 1
 	}
 )
+
+(1..50).each do |no|
+	Content.create!(
+	{
+		name: "Title#{no}",
+		url: 'https://mybook-gn.herokuapp.com',
+		description: "#{no}のサイト",
+		category: 'Webサイト',
+		private: 1,
+		user_id: 1
+	}
+)
+end
+# 採用ご担当者様用データend==========================================================
