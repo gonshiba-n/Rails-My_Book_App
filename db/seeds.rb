@@ -8,12 +8,27 @@
 
 
 
-users = [
-		{name: '採用ご担当者様',
-			email: 'recruit@example.com',
-			password: 'password',
-			introduction: 'ご覧頂き、誠にありがとうございます。ご査収の程、よろしくお願い致します。'}
-	]
-users.each do |record|
-  User.create!(record) unless User.find_by(email: record[:email])
+recruiter = [
+	{
+	id: 1,
+	name: '採用ご担当者様',
+	email: 'recruit@example.com',
+	password: 'password',
+	introduction: 'ご覧頂き、誠にありがとうございます。ご査収の程、よろしくお願い致します。',
+	confirmed_at: '2020-07-01 03:37:42.086451'
+	}
+]
+recruiter.each do |record|
+	User.create!(record) unless User.find_by(email: record[:email])
 end
+
+Content.create!(
+	{
+		name: 'まいぶく',
+		url: 'https://mybook-gn.herokuapp.com',
+		description: 'ブックマーク管理アプリ',
+		category: 'Webアプリ',
+		private: 1,
+		user_id: 1
+	}
+)
