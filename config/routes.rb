@@ -18,4 +18,6 @@ Rails.application.routes.draw do
     resources :contents
     delete "contents" => "contents#select_destroy", as: 'select_destroy'
   end
+
+  resources :relationships, only: [:create, :destroy]
 end
