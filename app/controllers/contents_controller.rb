@@ -5,8 +5,7 @@ class ContentsController < ApplicationController
     @user = User.all
     @q = current_user.contents.ransack(params[:q])
     @contents = @q.result(distinct: true).page(params[:page]).per(10)
-    count = 0
-    @count = count
+    @count = 0
   end
 
   def show
