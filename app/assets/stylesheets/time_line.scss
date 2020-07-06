@@ -1,12 +1,8 @@
-// Place all the styles related to the Users controller here.
+// Place all the styles related to the time_line controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.other_user{
-    .user_name{
-        display: flex;
-        justify-content: space-between;
-    }
+.time_line{
     .time_line_user_name{
         text-align: center;
         font-weight: 600;
@@ -32,15 +28,5 @@
     }
     a:hover, a h3:hover, a p:hover{
         color: rgb(105, 105, 105);
-    }
-    .follow_btn{
-        display: block;
-        max-width: 120px;
-        max-height: 40px;
-        margin: auto 0;
-        color: #fff;
-    }
-    .follow_btn:hover{
-        color: #fff;
     }
 }
