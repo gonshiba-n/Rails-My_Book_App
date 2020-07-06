@@ -21,4 +21,5 @@ Rails.application.routes.draw do
   end
 
   resources :time_line, only: [:index, :show]
+  resources :relationships, only: [:create, :destroy]
 end
