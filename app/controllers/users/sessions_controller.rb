@@ -5,12 +5,9 @@ class Users::SessionsController < Devise::SessionsController
 
   # GET /resource/sign_in
   def new
-    if params[:recruiter]
-      @recruiter = {
-        name: '採用ご担当者様',
-        email: 'recruit@example.com',
-        password: 'password'
-      }
+    if params[:user_id]
+            @recruiter = User.find(params[:user_id])
+      @pass = 'password'
     end
     super
   end

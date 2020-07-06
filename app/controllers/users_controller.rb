@@ -20,13 +20,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def other_user
-    @other_user = User.find(params[:user_id])
-    # @other_user_content = Content.where(user_id: params[:user_id])
-    @q = @other_user.contents.ransack(params[:q])
-    @other_user_content = @q.result(distinct: true).page(params[:page]).per(10).order(updated_at: :desc)
-  end
-
   private
 
   def set_user
