@@ -8,7 +8,7 @@
             <div class="card-body">
                 <h1 class="card-title">アカウント登録</h1>
                 <h2>ブックマーク管理共有アプリ「まいぶく」</h2>
-                <%= link_to '採用ご担当者様ログインフォーム', new_user_session_path(recruiter: true), class: 'btn btn-warning mb-2' %>
+                <%= link_to '採用ご担当者様ログインフォーム', new_user_session_path(user_id: 1), class: 'btn btn-warning mb-2' %>
 
                 <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
                     <%= render "devise/shared/error_messages", resource: resource %>
