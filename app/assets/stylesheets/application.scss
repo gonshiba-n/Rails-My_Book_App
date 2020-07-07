@@ -251,3 +251,46 @@ footer p{
 .pagination>li>a:hover {
     border-radius: 50%;    /*角を丸くする*/
 }
+
+/*フォロー、アンフォローボタン*/
+.follow_btn{
+    background:#6C757D;
+    color:#fff;
+    border:none;
+    position:relative;
+    height:40px;
+    max-width: 120px;
+    font-size:1.2em;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+    margin: 3% auto;
+}
+.follow_btn:hover{
+    background:#fff;
+    color:#1AAB8A;
+    border:solid 1px #1AAB8A;
+}
+
+.unfollow_btn{
+    background:#fff;
+    color:#1AAB8A;
+    border:solid 1px #1AAB8A;
+    position:relative;
+    height:40px;
+    max-width: 120px;
+    font-size:1.2em;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+    margin: 3% auto;
+}
+.unfollow_btn:hover{
+    background:#6C757D;
+    color:#fff;
+    border: none;
+}
+
+*{
+    word-wrap: break-word;
+}

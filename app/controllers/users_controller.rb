@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-  
+
   def other_user
     @other_user = User.find(params[:user_id])
     @q = @other_user.contents.ransack(params[:q])

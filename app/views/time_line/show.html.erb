@@ -1,24 +1,24 @@
 <div class="container-md index time_line">
-    <section class="content_box">
+    <%= render partial: 'layouts/flash' %>
+    <section>
         <h2>ブックマーク詳細<i class="fas fa-book-open"></i></h2>
         <section class="card mb-3">
             <div class="row justify-content-center">
                 <div class="col-md-4">
+                    <% user = @user %>
                     <%= link_to user_other_user_path(@content.user_id) do %>
                         <div class="my-2">
-                            <% if @content.user.user_image.attached? %>
-                                <%= image_tag @content.user.user_image.variant(resize:'100x100',border:'10').processed, class: 'time_line_user_image mx-auto' %>
+                            <% if user.user_image.attached? %>
+                                <%= image_tag user.user_image.variant(resize:'100x100',border:'10').processed, class: 'time_line_user_image mx-auto' %>
                             <% else %>
                                 <%= image_tag("user_default.jpeg", class: 'time_line_user_image mx-auto', :size => "120x120") %>
                             <% end %>
                         </div>
                         <div class="time_line_user_name my-2">
-                            <p><%= @content.user.name %></p>
-                        </div>
-                        <div>
-                            <button class="btn btn-primary d-block mx-auto follow">フォロー</button>
+                            <p><%= user.name %></p>
                         </div>
                     <% end %>
+                    <%= render partial: 'layouts/follow_button', locals: {user: user} %>
                 </div>
                 <div class="col-md-8 card-body user-discription">
                     <div class="content_info">

@@ -3,6 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .time_line{
+    h2{
+        font-size: 2em;
+        font-weight: 600;
+        padding: 2% 0;
+        color: #6C757D;
+    }
     .time_line_user_name{
         text-align: center;
         font-weight: 600;
@@ -15,10 +21,6 @@
     .title{
         font-weight: 600;
         font-size: 1.2rem;
-    }
-    .follow{
-        padding: 2%!important;
-        margin-bottom: 3%;
     }
     .content_info{
         height: 90%;

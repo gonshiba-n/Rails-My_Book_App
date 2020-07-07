@@ -8,6 +8,6 @@ class TimeLineController < ApplicationController
 
   def show
     @content = Content.find(params[:id])
-    user = User.find(@content.user_id)
+    @user = User.find(@content.user_id)
   end
 end

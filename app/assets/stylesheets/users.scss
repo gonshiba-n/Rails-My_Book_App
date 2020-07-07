@@ -2,6 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.user-discription{
+    position: relative;
+    .relationship-btn{
+        position: absolute;
+        bottom: 3%;
+        right: 3%;
+    }
+}
+
 .other_user{
     .user_name{
         display: flex;
@@ -20,10 +29,6 @@
         font-weight: 600;
         font-size: 1.2rem;
     }
-    .follow{
-        padding: 2%!important;
-        margin-bottom: 3%;
-    }
     .content_info{
         height: 90%;
     }
@@ -32,15 +37,5 @@
     }
     a:hover, a h3:hover, a p:hover{
         color: rgb(105, 105, 105);
-    }
-    .follow_btn{
-        display: block;
-        max-width: 120px;
-        max-height: 40px;
-        margin: auto 0;
-        color: #fff;
-    }
-    .follow_btn:hover{
-        color: #fff;
     }
 }

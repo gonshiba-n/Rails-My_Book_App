@@ -1,12 +1,5 @@
-<div class="container-sm index other_user">
-    <% if flash.notice.present?%>
-        <div class="alert alert-success alert-dismissible fade show" role="alert"><%= flash[:notice] %>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    <%end%>
-
+<div class="container-sm index">
+    <%= render partial: 'layouts/flash' %>
  <%#ユーザー=============================%>
     <section>
         <div class="row user-profile my-5">
@@ -20,8 +13,6 @@
             <div class="col-md-8 user-discription">
                 <div class="user_name">
                     <h2><%= @other_user.name %></h2>
-                    <%= link_to 'フォロー', edit_user_url(current_user), class: 'btn btn-primary follow_btn' %>
-                </div>
                 <p><%= @other_user.introduction %></p>
                 <div class="row">
                     <div class="col-md-3 follow">
@@ -29,6 +20,9 @@
                     </div>
                     <div class="col-md-3 follower">
                         フォロワー
+                    </div>
+                    <div class="relationship-btn">
+                        <%= render partial: 'layouts/follow_button', locals: {user: @other_user} %>
                     </div>
                 </div>
             </div>
@@ -40,7 +34,7 @@
         <%= paginate @other_user_content %>
     </div>
 
-    <section>
+    <section class=" other_user">
         <% @other_user_content.each do |content| %>
             <% user = @users %>
             <section class="card mb-3">
