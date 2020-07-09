@@ -1,0 +1,42 @@
+<div class="container index">
+<%= render partial: 'layouts/flash' %>
+    <% @user.followings.each do |user| %>
+        <section class="card mb-3">
+            <div class="row justify-content-center">
+                <div class="col-md-4 mx-auto my-auto">
+                    <%= link_to user_other_user_path(user) do %>
+                        <div class="my-2">
+                            <% if user.user_image.attached? %>
+                                <%= image_tag user.user_image.variant(resize:'60x60',border:'10').processed, class: 'd-block time_line_user_image mx-auto' %>
+                            <% else %>
+                                <%= image_tag("user_default.jpeg", class: 'time_line_user_image mx-auto', :size => "80x80", class: 'd-block mx-auto') %>
+                            <% end %>
+                        </div>
+                    <% end %>
+                    <%= render partial: 'layouts/follow_button', locals: {user: user} %>
+                </div>
+
+                <%= link_to user_other_user_path(user) do %>
+                <div class="col-md-8 card-body user-discription">
+                    <div class="content_info">
+                        <div class="time_line_user_name my-2">
+                            <p class="mx-auto my-3 text-dark"><%= user.name %></p>
+                        </div>
+                        <% if user.introduction? %>
+                            <p class="card-text text-dark"><%= user.introduction %></p>
+                        <% else %>
+                            <p class="card-text text-dark">まだプロフィールがありません</p>
+                        <% end %>
+                    </div>
+                <% end %>
+                <% if user.following?(current_user) %>
+                    <p class="mt-3 text-right pr-3">(フォローされています)</p>
+                <% end %>
+            </div>
+             <%#SVG B====================%>
+            <%= link_to user_contents_path, data_toggle: 'tooltip', data_placement: 'topdo', title: '戻る'  do %>
+                <%= embedded_svg('back.svg', class: "plus")%>
+            <% end %>
+        </section>
+    <% end %>
+</div>

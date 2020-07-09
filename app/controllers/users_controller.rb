@@ -26,6 +26,13 @@ class UsersController < ApplicationController
     @other_user_content = @q.result(distinct: true).page(params[:page]).per(10).order(updated_at: :desc)
   end
 
+  def following_users
+    @user = User.find(params[:user_id])
+  end
+  def follower_users
+    @user = User.find(params[:user_id])
+  end
+
   private
 
   def set_user

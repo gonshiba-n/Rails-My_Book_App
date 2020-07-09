@@ -14,12 +14,16 @@
                 <div class="user_name">
                     <h2><%= @other_user.name %></h2>
                 <p><%= @other_user.introduction %></p>
-                <div class="row">
+                <div class="row mt-3 position-relative">
                     <div class="col-md-3 follow">
-                        フォロー
+                        <%= link_to user_following_users_path, class:'text-dark' do %>
+                            フォロー <%= @other_user.followings.count %>
+                        <% end %>
                     </div>
                     <div class="col-md-3 follower">
-                        フォロワー
+                        <%= link_to user_follower_users_path, class:'text-dark' do %>
+                            フォロワー <%= @other_user.followers.count %>
+                        <% end %>
                     </div>
                     <div class="relationship-btn">
                         <%= render partial: 'layouts/follow_button', locals: {user: @other_user} %>
@@ -80,7 +84,7 @@
         </div>
     </section>
     <%#SVG B====================%>
-    <%= link_to :back, data_toggle: 'tooltip', data_placement: 'topdo', title: '戻る'  do %>
+    <%= link_to time_line_index_path, data_toggle: 'tooltip', data_placement: 'topdo', title: '戻る'  do %>
         <%= embedded_svg('back.svg', class: "plus")%>
     <% end %>
 </div>

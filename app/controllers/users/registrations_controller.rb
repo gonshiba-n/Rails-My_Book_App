@@ -23,7 +23,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
   def edit
-    super
+    super do
+      resource.skip_reconfirmation!
+      resource.save
+    end
   end
 
   # PUT /resource
