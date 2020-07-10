@@ -1,7 +1,11 @@
 <div class="container-md index time_line">
     <%= render partial: 'layouts/flash' %>
     <section>
-        <h2>ブックマーク詳細<i class="fas fa-book-open"></i></h2>
+        <% if @content.private == 2 %>
+            <h2>ブックマーク詳細(フォロワーのみ公開)<i class="fas fa-book-open"></i></h2>
+        <% else %>
+            <h2>ブックマーク詳細<i class="fas fa-book-open"></i></h2>
+        <% end %>
         <section class="card mb-3">
             <div class="row justify-content-center">
                 <div class="col-md-4">
@@ -22,7 +26,11 @@
                 </div>
                 <div class="col-md-8 card-body user-discription">
                     <div class="content_info">
-                    <h3 class="card-title title"><%= @content.name %></h3>
+                    <% if @content.private == 2 %>
+                        <h3 class="card-title title"><%= @content.name %><i class="fa fa-lock mt-n2 ml-3" aria-hidden="true"></i></h3>
+                    <% else %>
+                        <h3 class="card-title title"><%= @content.name %></h3>
+                    <% end %>
                     <% if @content.description? %>
                         <p class="card-text"><%= @content.description %></p>
                     <% else %>
