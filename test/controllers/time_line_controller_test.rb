@@ -10,5 +10,4 @@ class TimeLineControllerTest < ActionDispatch::IntegrationTest
     get time_line_show_url
     assert_response :success
   end
-
 end

@@ -22,13 +22,15 @@ class UsersController < ApplicationController
 
   def other_user
     @other_user = User.find(params[:user_id])
-    @q = @other_user.contents.ransack(params[:q])
-    @other_user_content = @q.result(distinct: true).page(params[:page]).per(10).order(updated_at: :desc)
+    @other_user_content = Content.where(private: [1, 2], user_id: [@other_user])
+    @q = @other_user_content.ransack(params[:q])
+    @other_user_contents = @q.result(distinct: true).page(params[:page]).per(10).order(updated_at: :desc)
   end
 
   def following_users
     @user = User.find(params[:user_id])
   end
+
   def follower_users
     @user = User.find(params[:user_id])
   end

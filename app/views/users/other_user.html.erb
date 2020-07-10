@@ -35,11 +35,16 @@
 <%#コンテンツ=============================%>
     <%#ページネーション%>
     <div class="my-3 paginate">
-        <%= paginate @other_user_content %>
+        <%= paginate @other_user_contents %>
     </div>
 
     <section class=" other_user">
-        <% @other_user_content.each do |content| %>
+        <% @other_user_contents.each do |content| %>
+            <% unless @other_user.following?(current_user) || current_user.id == @other_user.id %>
+                <% if content.private == 2 %>
+                    <% next %>
+                <%end%>
+            <% end %>
             <% user = @users %>
             <section class="card mb-3">
                 <div class="row justify-content-center p-2">
@@ -80,7 +85,7 @@
         <% end %>
         <%#ページネーション%>
         <div class="my-3 paginate">
-            <%= paginate @other_user_content %>
+            <%= paginate @other_user_contents %>
         </div>
     </section>
     <%#SVG B====================%>

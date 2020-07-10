@@ -19,6 +19,7 @@ class ContentsController < ApplicationController
   end
 
   def create
+    p "#{content_params}aaaa"
     @content = current_user.contents.new(content_params)
     if @content.save
       redirect_to user_contents_url, notice: "タイトル「#{@content.name}」を投稿しました"
