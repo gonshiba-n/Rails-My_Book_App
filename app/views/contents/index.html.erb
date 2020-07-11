@@ -66,7 +66,7 @@
                         <td> <%= link_to content.name, user_content_path(@user, content) %> </td>
                         <td> <%= link_to 'URL', content.url %> </td>
                         <%#概要は空白の場合の処理も記載%>
-                        <td><%= link_to content.description.blank? ? 'None' : content.description, user_content_path(@user, content) %></td>
+                        <td><%= link_to content.description.blank? ? 'None' : content.description, user_content_path(@user, content), class: 'td_description d-block' %></td>
 
 
                         <%#カテゴリーは空白の場合の処理も記載%>
@@ -94,10 +94,8 @@
     <%= link_to new_user_content_path, data_toggle: 'tooltip', data_placement: 'topdo', title: '新規作成' do %>
         <%= embedded_svg('plus.svg', class: "plus")%>
     <% end %>
-
- <%#SVG T====================%>
- <%#SVG Timeline機能未実装====================%>
-    <%= link_to new_user_content_path, data_toggle: 'tooltip', data_placement: 'topdo', title: 'タイムライン'  do %>
+ <%#SVG Timeline====================%>
+    <%= link_to time_line_index_path, data_toggle: 'tooltip', data_placement: 'topdo', title: 'タイムライン'  do %>
         <%= embedded_svg('timeline.svg', class: "timeline")%>
     <% end %>
 </div>

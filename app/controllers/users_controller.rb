@@ -20,8 +20,6 @@ class UsersController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
-=======
   def other_user
     @other_user = User.find(params[:user_id])
     @other_user_content = Content.where(private: [1, 2], user_id: [@other_user])
@@ -37,7 +35,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:user_id])
   end
 
->>>>>>> product
   private
 
   def set_user
