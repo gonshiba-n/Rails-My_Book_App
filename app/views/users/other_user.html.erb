@@ -1,0 +1,95 @@
+<div class="container-sm index">
+    <%= render partial: 'layouts/flash' %>
+ <%#ユーザー=============================%>
+    <section>
+        <div class="row user-profile my-5">
+            <div class="col-md-3">
+                <% if @other_user.user_image.attached? %>
+                    <%= image_tag @other_user.user_image.variant(resize:'150x150',border:'10').processed, class: 'user_image' %>
+                <% else %>
+                    <%= image_tag("user_default.jpeg", :size => "100x100",class: 'default_image') %>
+                <% end %>
+            </div>
+            <div class="col-md-8 user-discription">
+                <div class="user_name">
+                    <h2><%= @other_user.name %></h2>
+                <p><%= @other_user.introduction %></p>
+                <div class="row mt-3 position-relative">
+                    <div class="col-md-3 follow">
+                        <%= link_to user_following_users_path, class:'text-dark' do %>
+                            フォロー <%= @other_user.followings.count %>
+                        <% end %>
+                    </div>
+                    <div class="col-md-3 follower">
+                        <%= link_to user_follower_users_path, class:'text-dark' do %>
+                            フォロワー <%= @other_user.followers.count %>
+                        <% end %>
+                    </div>
+                    <div class="relationship-btn">
+                        <%= render partial: 'layouts/follow_button', locals: {user: @other_user} %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<%#コンテンツ=============================%>
+    <%#ページネーション%>
+    <div class="my-3 paginate">
+        <%= paginate @other_user_contents %>
+    </div>
+
+    <section class=" other_user">
+        <% @other_user_contents.each do |content| %>
+            <% unless @other_user.following?(current_user) || current_user.id == @other_user.id %>
+                <% if content.private == 2 %>
+                    <% next %>
+                <%end%>
+            <% end %>
+            <% user = @users %>
+            <section class="card mb-3">
+                <div class="row justify-content-center p-2">
+                    <div class="col-md-4">
+                    <%= link_to user_other_user_path(content.user_id) do %>
+                        <div class="my-2">
+                            <% if content.user.user_image.attached? %>
+                                <%= image_tag content.user.user_image.variant(resize:'100x100',border:'10').processed, class: 'time_line_user_image mx-auto' %>
+                            <% else %>
+                                <%= image_tag("user_default.jpeg", class: 'time_line_user_image mx-auto', :size => "120x120") %>
+                            <% end %>
+                        </div>
+                        <div class="time_line_user_name my-2">
+                            <p><%= content.user.name %></p>
+                        </div>
+                    <% end %>
+                    </div>
+                    <%= link_to time_line_path(content.id) do %>
+                        <div class="col-md-8 card-body user-discription">
+                            <div class="content_info">
+                                <h3 class="card-title title"><%= content.name %></h3>
+                                <% if content.description? %>
+                                    <p class="card-text"><%= content.description %></p>
+                                <% else %>
+                                    <p class="card-text">説明はありません</p>
+                                <% end %>
+                            </div>
+                            <%= link_to content.url, content.url, class: 'd-block card-text' %>
+                            <p class="card-text text-right">
+                                <time datetime="<%= content.created_at %>">
+                                    投稿日時：<%= time_ago_in_words(content.updated_at) %>前
+                                </time>
+                            </p>
+                        </div>
+                    <% end %>
+                </div>
+            </section>
+        <% end %>
+        <%#ページネーション%>
+        <div class="my-3 paginate">
+            <%= paginate @other_user_contents %>
+        </div>
+    </section>
+    <%#SVG B====================%>
+    <%= link_to time_line_index_path, data_toggle: 'tooltip', data_placement: 'topdo', title: '戻る'  do %>
+        <%= embedded_svg('back.svg', class: "plus")%>
+    <% end %>
+</div>

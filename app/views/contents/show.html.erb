@@ -37,7 +37,7 @@
                 <td> <%= if @content.private == 1
                         "1.全てのユーザーに投稿を公開"
                         elsif @content.private == 2
-                        "2.フォロー、フォロワーのみに投稿を公開"
+                        "2.フォローしているユーザーのみに投稿を公開"
                         elsif @content.private == 3
                         "3.非公開"
                         else

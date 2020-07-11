@@ -1,23 +1,13 @@
-// Place all the styles related to the Users controller here.
+// Place all the styles related to the time_line controller here.
 // They will automatically be included in application.css.
-<<<<<<< HEAD
-// You can use Sass (SCSS) here: http://sass-lang.com/
-=======
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.user-discription{
-    position: relative;
-    .relationship-btn{
-        position: absolute;
-        bottom: 3%;
-        right: 3%;
-    }
-}
-
-.other_user{
-    .user_name{
-        display: flex;
-        justify-content: space-between;
+.time_line{
+    h2{
+        font-size: 2em;
+        font-weight: 600;
+        padding: 2% 0;
+        color: #6C757D;
     }
     .time_line_user_name{
         text-align: center;
@@ -42,4 +32,3 @@
         color: rgb(105, 105, 105);
     }
 }
->>>>>>> product

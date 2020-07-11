@@ -1,11 +1,5 @@
 <div class="container-sm index">
-    <% if flash.notice.present?%>
-        <div class="alert alert-success alert-dismissible fade show" role="alert"><%= flash[:notice] %>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    <%end%>
+    <%= render partial: 'layouts/flash' %>
 
  <%#ユーザー=============================%>
     <section>
@@ -22,10 +16,14 @@
                 <p><%= current_user.introduction %></p>
                 <div class="row">
                     <div class="col-md-3 follow">
-                        フォロー
+                        <%= link_to user_following_users_path, class:'text-dark' do %>
+                            フォロー <%= current_user.followings.count %>
+                        <% end %>
                     </div>
                     <div class="col-md-3 follower">
-                        フォロワー
+                        <%= link_to user_follower_users_path, class:'text-dark' do %>
+                            フォロワー <%= current_user.followers.count %>
+                        <% end %>
                     </div>
                 </div>
             </div>

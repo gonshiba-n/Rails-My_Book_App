@@ -15,7 +15,19 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show, :edit, :update] do
+<<<<<<< HEAD
     resources :contents
     delete "contents" => "contents#select_destroy", as: 'select_destroy'
   end
+=======
+    get "other_user", to: "users#other_user", as: 'other_user'
+    get "following_users", to: "users#following_users", as: 'following_users'
+    get "follower_users", to: "users#follower_users", as: 'follower_users'
+    resources :contents
+    delete "contents" => "contents#select_destroy", as: 'select_destroy'
+  end
+
+  resources :time_line, only: [:index, :show]
+  resources :relationships, only: [:create, :destroy]
+>>>>>>> product
 end
