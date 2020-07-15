@@ -1,6 +1,10 @@
 class Content < ApplicationRecord
   belongs_to :user
   has_one_attached :image
+
+  has_many :favorites, dependent: :destroy
+  has_many :users, foreign_key: :favorites
+
   scope :recent, -> { order(updated_at: :desc) }
 
   validates :name, presence: true
@@ -8,6 +12,8 @@ class Content < ApplicationRecord
 
   validates :url, presence: true
   validates :url, format: /\A#{URI::regexp(%w(http https))}\z/
+
+  # validates :description, lemgth{ maximum: 160 }
 
   validates :private, presence: true
   validates :private, length: { maximum: 1 }

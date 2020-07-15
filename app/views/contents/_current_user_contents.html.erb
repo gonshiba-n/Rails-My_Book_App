@@ -1,0 +1,41 @@
+<div class="tables">
+    <table class="table table-hover tab-pane fade show active">
+        <thead>
+            <tr>
+                <th scope="col">選択</th>
+                <th scope="col"><%= sort_link(@q, :name, "タイトル") %></th>
+                <th scope="col"><%= sort_link(@q, :url, "URL") %></th>
+                <th scope="col"><%= sort_link(@q, :description, "概要") %></th>
+                <th scope="col"><%= sort_link(@q, :category, "カテゴリ") %></th>
+                <th scope="col"><%= sort_link(@q, :updated_at, "日時") %></th>
+            </tr>
+        </thead>
+        <tbody data-t>
+            <%= form_with model: [@users, @contents], url: user_contents_path, method: :delete, local: true do |f| %>
+                    <% @contents.each do |content| %>
+                        <% @count += 1%>
+                        <tr>
+                        <td>
+                            <%= f.check_box :content_ids, {type: 'checkbox', class: 'checkbox-select', id: "checkbox#{@count}", multiple: true}, content.id %>
+                            <%= f.label :'', for: "checkbox#{@count}",class: 'select-label', id: "select_delete_label#{@count}" %>
+                        </td>
+                        <td> <%= link_to content.name, user_content_path(@user, content) %> </td>
+                        <td> <%= link_to 'URL', content.url %> </td>
+                        <%#概要は空白の場合の処理も記載%>
+                        <td><%= link_to content.description.blank? ? 'None' : content.description, user_content_path(@user, content), class: 'td_description d-block' %></td>
+
+
+                        <%#カテゴリーは空白の場合の処理も記載%>
+                        <td><%= link_to content.category.blank? ? 'None' : content.category, user_content_path(@user, content) %></td>
+                        <td><%= link_to content.updated_at.to_s(:datetime_jp), user_content_path(@user, content) %></td>
+                        </tr>
+                    <% end %>
+
+                <%#SVG Delete==========================%>
+                <%= f.button user_select_destroy_path, method: :delete,  data_toggle: 'tooltip', data_placement: 'topdo', title: '削除',data: {confirm: "ブックマークを削除します"},class: 'select_submit',local: true do %>
+                    <%= embedded_svg('delete.svg', class: "delete")%>
+                <% end %>
+            <% end %>
+        </tbody>
+    </table>
+</div>

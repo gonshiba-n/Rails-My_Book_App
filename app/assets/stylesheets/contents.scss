@@ -5,6 +5,9 @@
 
 // contents_index(ユーザー画面、コンテンツ一覧画面)
 // ユーザーセクション==============================
+a{
+    color: #53595f!important;
+}
 
 .user-profile{
     position: relative;
@@ -25,6 +28,7 @@
         position: absolute;
         bottom: 2%;
         right: 2%;
+        color: #fff!important;
     }
 }
 .user_image{
@@ -267,5 +271,29 @@ $color: #6C757D; /* Red */
     .btn[type="submit"]:hover:before,.btn[type="submit"]:hover:after{
         width:100%;
         transition:800ms ease all;
+    }
+}
+
+// favorite_contents
+
+.favorite_contents{
+    a, a:hover{
+        color: #6C757D;
+    }
+    .contents_container{
+        position: relative;
+        padding: 1.3rem;
+    }
+    .favorites_user_image{
+        display: block;
+        margin: 0 auto;
+    }
+    .content_info{
+        height: 90%;
+    }
+    .favorites_button{
+        position: absolute;
+        top: 3%;
+        right: 3%;
     }
 }
