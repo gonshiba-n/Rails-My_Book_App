@@ -12,6 +12,10 @@
 }
 
 .other_user{
+    .content_conteiner{
+        position: relative;
+        padding: 1.25rem;
+    }
     .user_name{
         display: flex;
         justify-content: space-between;
@@ -37,5 +41,10 @@
     }
     a:hover, a h3:hover, a p:hover{
         color: rgb(105, 105, 105);
+    }
+    .favorites_button{
+        position: absolute;
+        top: 3%;
+        right: 3%;
     }
 }

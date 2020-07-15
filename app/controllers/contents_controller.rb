@@ -6,6 +6,7 @@ class ContentsController < ApplicationController
     @q = current_user.contents.ransack(params[:q])
     @contents = @q.result(distinct: true).page(params[:page]).per(10)
     @count = 0
+    @favorites = Favorite.where(user_id: current_user.id)
   end
 
   def show
@@ -63,7 +64,7 @@ class ContentsController < ApplicationController
   private
 
   def content_params
-    params.require(:content).permit(:id, :name, :url, :description, :category, :private)
+    params.require(:content).permit(:id, :name, :url, :description, :category, :private, :user_id)
   end
 
   def select_content_params

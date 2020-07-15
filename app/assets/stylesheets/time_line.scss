@@ -9,6 +9,10 @@
         padding: 2% 0;
         color: #6C757D;
     }
+    .content_container{
+        position: relative;
+        padding: 1.25rem;
+    }
     .time_line_user_name{
         text-align: center;
         font-weight: 600;
@@ -30,5 +34,10 @@
     }
     a:hover, a h3:hover, a p:hover{
         color: rgb(105, 105, 105);
+    }
+    .favorites_button{
+        position: absolute;
+        top: 2%;
+        right: 2%;
     }
 }

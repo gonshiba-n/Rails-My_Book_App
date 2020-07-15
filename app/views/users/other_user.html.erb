@@ -47,7 +47,7 @@
             <% end %>
             <% user = @users %>
             <section class="card mb-3">
-                <div class="row justify-content-center p-2">
+                <div class="row justify-content-center content_conteiner">
                     <div class="col-md-4">
                     <%= link_to user_other_user_path(content.user_id) do %>
                         <div class="my-2">
@@ -64,7 +64,7 @@
                     </div>
                     <%= link_to time_line_path(content.id) do %>
                         <div class="col-md-8 card-body user-discription">
-                            <div class="content_info">
+                            <div class="content_info mb-2">
                                 <h3 class="card-title title"><%= content.name %></h3>
                                 <% if content.description? %>
                                     <p class="card-text"><%= content.description %></p>
@@ -80,6 +80,9 @@
                             </p>
                         </div>
                     <% end %>
+                    <div class="favorites_button">
+                        <%= render partial: 'layouts/favorite_button', locals: {content: content} %>
+                    </div>
                 </div>
             </section>
         <% end %>

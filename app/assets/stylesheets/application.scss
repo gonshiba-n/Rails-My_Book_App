@@ -122,6 +122,12 @@ hr {
 input, select {
     vertical-align: middle;
 }
+*{
+    word-wrap: break-word;
+}
+*:focus {
+    box-shadow:none !important;
+}
 /* ======================================================================================== */
 
 /* ここから下にCSSを記述 */
@@ -168,7 +174,7 @@ footer div{
 
 .footer-logo{
     font-family: "Nico Moji";
-    color: #000;
+    color: #000!important;
     text-decoration : none !important;
     font-size: 30px;
 }
@@ -289,8 +295,4 @@ footer p{
     background:#6C757D;
     color:#fff;
     border: none;
-}
-
-*{
-    word-wrap: break-word;
 }

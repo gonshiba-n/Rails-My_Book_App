@@ -7,6 +7,10 @@ class User < ApplicationRecord
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
   has_many :followers, through: :reverse_of_relationships, source: :user
 
+  has_many :contents
+  has_many :favorites
+  has_many :fav_content, through: :favorites, source: :content
+
   validate :validate_user_image
 
   validates :name, presence: true
@@ -44,7 +48,22 @@ class User < ApplicationRecord
   end
 
   def following?(other_user)
+    # オブジェクトとしてother_userを含んでいるのでinclude?を使用(Viewにてインスタンス作成している)
     followings.include?(other_user)
+  end
+
+  def like(content)
+    favorites.find_or_create_by(content_id: content.id)
+  end
+
+  def unlike(content)
+    favorite = favorites.find_by(content_id: content.id)
+    favorite.destroy if favorite
+  end
+
+  def like?(content)
+    # each文から値を取得しているためインスタンスからの取得ではない
+    favorites.exists?(content_id: content.id)
   end
 
   private

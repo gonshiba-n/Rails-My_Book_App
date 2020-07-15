@@ -1,0 +1,55 @@
+<section class="mt-3 favorite_contents">
+    <% @favorites.each do |favorite| %>
+        <% content = Content.find(favorite.content_id) %>
+        <% user = User.find(content.user_id) %>
+        <section class="card mb-3">
+            <div class="row justify-content-center contents_container">
+                <div class="col-md-4">
+                    <%= link_to user_other_user_path(user) do %>
+                        <div class="my-2">
+                            <% if user.user_image.attached? %>
+                                <%= image_tag user.user_image.variant(resize:'60x60',border:'10').processed, class: 'favorites_user_image mx-auto' %>
+                            <% else %>
+                                <%= image_tag("user_default.jpeg", class: 'favorites_user_image mx-auto', :size => "80x80") %>
+                            <% end %>
+                        </div>
+                        <div class="time_line_user_name my-2">
+                            <p class="text-center"><%= user.name %></p>
+                        </div>
+                    <% end %>
+                    <%= render partial: 'layouts/follow_button', locals: {user: user} %>
+                </div>
+
+                <%= link_to time_line_path(content.id) do %>
+                    <div class="col-md-8 card-body user-discription">
+                        <div class="content_info">
+                            <h3 class="card-title title"><%= content.name %></h3>
+
+                        <% if content.description? %>
+                            <p class="card-text mb-2"><%= content.description %></p>
+                        <% else %>
+                            <p class="card-text">説明はありません</p>
+                        <% end %>
+                        </div>
+                        <%= link_to content.url, content.url, class: 'd-block card-text' %>
+                        <p class="card-text text-right">
+                            <time datetime="<%= content.created_at %>">
+                                投稿日時：<%= time_ago_in_words(content.updated_at) %>前
+                            </time>
+                        </p>
+                    </div>
+                <% end %>
+                <div class="favorites_button">
+                    <%= render partial: 'layouts/favorite_button', locals: {content: content} %>
+                </div>
+            </div>
+        </section>
+    <% end %>
+    <%#SVG Delete==========================%>
+    <%= button_tag class: 'select_submit　disabled',local: true do %>
+        <%= embedded_svg('delete.svg', class: "delete")%>
+    <% end %>
+    <div class="my-3 paginate">
+        <%= paginate @contents %>
+    </div>
+</section>
