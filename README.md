@@ -2,7 +2,7 @@
 
 ## アプリケーション概要
 ブックマークを管理して共有できるブックマーク投稿SNSサービス。
-<br>URL: https://mybook-gn.herokuapp.com/users/1/contents
+<br>URL: https://mybook-gn.herokuapp.com
 
 ## アプリケーション機能
 ・基本的なCRUD処理<br>
