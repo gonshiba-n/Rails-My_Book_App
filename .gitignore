@@ -29,7 +29,7 @@
 /.env
 /lib/*
 /public/*
-/strage/*
+/storage/*
 /tmp/*
 /vendor/*
 /.ruby-version/*
