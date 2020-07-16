@@ -25,7 +25,7 @@
           <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
             <li class="nav-item">
-              <p class="nav-link"><%= "ログイン中: #{current_user.name}" %></p>
+            <%= link_to "ログイン中: #{current_user.name}", user_contents_path(current_user.id), class: 'nav-link' %>
             </li>
             <li class="nav-item">
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link' %>
