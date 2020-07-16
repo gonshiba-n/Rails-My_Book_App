@@ -131,6 +131,9 @@ input, select {
 /* ======================================================================================== */
 
 /* ここから下にCSSを記述 */
+a{
+    color: #53595f;
+}
 .index{
     padding-top: 5rem;
     position: relative;
@@ -256,6 +259,9 @@ footer p{
 /*ホバー時のデザイン*/
 .pagination>li>a:hover {
     border-radius: 50%;    /*角を丸くする*/
+}
+.page-item.active .page-link{
+    color: #fff;
 }
 
 /*フォロー、アンフォローボタン*/

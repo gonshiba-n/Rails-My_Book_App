@@ -27,3 +27,12 @@
 /config/master.key
 
 /.env
+/lib/*
+/public/*
+/strage/*
+/tmp/*
+/vendor/*
+/.ruby-version/*
+/Rakefile
+/config.ru
+/pacage.json

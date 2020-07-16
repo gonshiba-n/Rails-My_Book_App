@@ -6,7 +6,7 @@ class ContentsController < ApplicationController
     @q = current_user.contents.ransack(params[:q])
     @contents = @q.result(distinct: true).page(params[:page]).per(10)
     @count = 0
-    @favorites = Favorite.where(user_id: current_user.id)
+    @favorites = Favorite.where(user_id: current_user.id).order(created_at: :asc)
   end
 
   def show
