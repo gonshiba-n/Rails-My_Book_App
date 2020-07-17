@@ -73,3 +73,4 @@ gem 'ransack'
 gem 'kaminari'
 gem 'dotenv-rails'
 gem 'aws-sdk-s3', require: false
+gem 'activerecord-session_store'
