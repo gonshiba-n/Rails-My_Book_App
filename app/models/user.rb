@@ -22,7 +22,8 @@ class User < ApplicationRecord
          :recoverable,
          :rememberable,
          :validatable,
-         :confirmable
+         :confirmable,
+         :timeoutable
 
   def validate_user_image
     return unless user_image.attached? # ファイルがアタッチされていない場合は何もしない
