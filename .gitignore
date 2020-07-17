@@ -32,7 +32,4 @@
 /storage/*
 /tmp/*
 /vendor/*
-/.ruby-version/*
-/Rakefile
 /config.ru
-/pacage.json
