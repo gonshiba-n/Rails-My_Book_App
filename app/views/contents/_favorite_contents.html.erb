@@ -46,7 +46,7 @@
         </section>
     <% end %>
     <%#SVG Delete==========================%>
-    <%= button_tag class: 'select_submit disabled',local: true do %>
-        <%= embedded_svg('delete.svg', class: "delete")%>
+    <%= button_tag class: 'select_submit',local: true, disabled: true do %>
+        <i class="fas fa-minus-circle fa-4x delete disabled"></i>
     <% end %>
 </section>

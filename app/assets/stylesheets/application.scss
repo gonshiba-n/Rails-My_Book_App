@@ -124,11 +124,13 @@ input, select {
 }
 *{
     word-wrap: break-word;
+    font-family: "Nico Moji";
 }
 *:focus {
     box-shadow:none !important;
 }
 /* ======================================================================================== */
+
 
 /* ここから下にCSSを記述 */
 a{
@@ -140,11 +142,10 @@ a{
 }
 
 // ナビバー
-
-.header-nav {
-    background-color: #e6e6fa;
-    border-bottom: 1px solid #d8d8d8;
+header{
+    color: #e6e6fa;
 }
+
 .navbar-brand{
     font-family: "Nico Moji";
     font-size: 45px;
@@ -182,10 +183,6 @@ footer div{
     font-size: 30px;
 }
 
-.footer-logo:hover{
-    color: #000;
-}
-
 footer p{
     width: 100%;
     font-size: 20px;
@@ -209,6 +206,7 @@ footer p{
 .plus:hover{
     opacity: 1;
     cursor: pointer;
+    color: #007bff;
 }
 
 .delete{
@@ -221,11 +219,25 @@ footer p{
     position: fixed;
     bottom: 40px;
     right: 120px;
+    color: #53595f;
 }
 
 .delete:hover{
     opacity: 1;
     cursor: pointer;
+    color: #007bff;
+}
+.disabled:hover{
+    opacity: 1;
+    cursor: pointer;
+    color: #53595f;
+    opacity: 0.4;
+}
+
+.select_submit{
+    overflow: hidden;
+    position: relative;
+    left: -1000px;
 }
 
 .timeline{
@@ -242,6 +254,7 @@ footer p{
 .timeline:hover{
     opacity: 1;
     cursor: pointer;
+    color: #007bff;
 }
 
 /*ページネーションデザイン*/

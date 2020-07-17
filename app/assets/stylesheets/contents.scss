@@ -89,7 +89,7 @@ $tl: 0.6s; // transition length
     .search-icon {
         position: relative;
         top: 3px;
-        left: -36px;
+        left: -40px;
         color: white;
         cursor: pointer;
     }
@@ -143,6 +143,7 @@ $tl: 0.6s; // transition length
 $color: #6C757D; /* Red */
 
 .select-label {
+    font-family: sans-serif;
     cursor: pointer;
     &:before{
     display: inline-block;
@@ -170,12 +171,6 @@ $color: #6C757D; /* Red */
 }
 
 .checkbox-select { visibility: hidden; }
-
-.select_submit{
-    overflow: hidden;
-    position: relative;
-    left: -1000px;
-}
 
 // content_new(新規投稿作成画面)+_form.html
 .errors-val{

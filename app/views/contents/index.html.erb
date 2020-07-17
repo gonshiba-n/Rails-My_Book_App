@@ -66,11 +66,12 @@
 
  <%#SVG +==========================%>
     <%= link_to new_user_content_path, data_toggle: 'tooltip', data_placement: 'topdo', title: '新規作成' do %>
-        <%= embedded_svg('plus.svg', class: "plus")%>
+        <i class="fas fa-plus-circle fa-4x plus"></i>
     <% end %>
  <%#SVG Timeline====================%>
     <%= link_to time_line_index_path, data_toggle: 'tooltip', data_placement: 'topdo', title: 'タイムライン'  do %>
-        <%= embedded_svg('timeline.svg', class: "timeline")%>
+        <%#= embedded_svg('timeline.svg', class: "timeline")%>
+        <i class="fas fa-comments fa-4x timeline"></i>
     <% end %>
 </div>
 
