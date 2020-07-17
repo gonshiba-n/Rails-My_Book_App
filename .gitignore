@@ -27,9 +27,3 @@
 /config/master.key
 
 /.env
-/lib/*
-/public/*
-/storage/*
-/tmp/*
-/vendor/*
-/config.ru
