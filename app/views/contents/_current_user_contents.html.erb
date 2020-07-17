@@ -33,7 +33,7 @@
 
                 <%#SVG Delete==========================%>
                 <%= f.button user_select_destroy_path, method: :delete,  data_toggle: 'tooltip', data_placement: 'topdo', title: '削除',data: {confirm: "ブックマークを削除します"},class: 'select_submit',local: true do %>
-                    <%= embedded_svg('delete.svg', class: "delete")%>
+                    <i class="fas fa-minus-circle fa-4x delete"></i>
                 <% end %>
             <% end %>
         </tbody>
