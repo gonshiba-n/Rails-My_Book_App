@@ -38,11 +38,11 @@
         </section>
     <% end %>
 </div>
- <%#SVG Edit====================%>
-    <%= link_to edit_user_registration_url, data_toggle: 'tooltip', data_placement: 'topdo', title: '詳細編集'  do %>
-        <%= embedded_svg('edit.svg', class: "delete") %>
-    <% end %>
- <%#SVG B====================%>
+<%#SVG Edit====================%>
+<%= link_to edit_user_registration_url, data_toggle: 'tooltip', data_placement: 'topdo', title: '詳細編集'  do %>
+    <i class="fas fa-edit fa-4x delete"></i>
+<% end %>
+<%#SVG B====================%>
 <%= link_to user_contents_path(current_user.id), data_toggle: 'tooltip', data_placement: 'topdo', title: '戻る'  do %>
-    <%= embedded_svg('back.svg', class: "plus") %>
+    <i class="fas fa-chevron-circle-left fa-4x plus"></i>
 <% end %>

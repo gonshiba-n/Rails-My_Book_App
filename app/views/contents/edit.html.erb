@@ -64,11 +64,7 @@
     </section>
 
     <%#SVG B====================%>
-    <%= link_to user_contents_path, data_toggle: 'tooltip', data_placement: 'topdo', title: '戻る'  do %>
-        <%= embedded_svg('back.svg', class: "plus")%>
-    <% end %>
-    <%#SVG B====================%>
-    <%= link_to user_content_path(current_user.id, @content), data_toggle: 'tooltip', data_placement: 'topdo', title: '戻る'  do %>
-        <%= embedded_svg('back.svg', class: "plus")%>
+    <%= link_to user_content_path(current_user.id, @content), data_toggle: 'tooltip', data_placement: 'topdo', title: '戻る',class: 'plus'  do %>
+        <i class="fas fa-chevron-circle-left fa-4x plus"></i>
     <% end %>
 </div>
