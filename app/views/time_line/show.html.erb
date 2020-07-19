@@ -54,5 +54,44 @@
                 <% end %>
             </div>
         </section>
+        <div class="container">
+        <p>コメント:</p>
+        <% @comment.each do |comment| %>
+            <% user = User.find(comment.user_id) %>
+            <% content = Content.find(comment.content_id) %>
+                <div class="card mb-1">
+                    <div class="card-body row">
+                        <div class="col-md-2">
+                            <% if user.user_image.attached? %>
+                                <%= image_tag user.user_image.variant(resize:'60x60',border:'10').processed, class: 'd-block mx-auto' %>
+                            <% else %>
+                                <%= image_tag("user_default.jpeg", :size => "80x80", class: 'd-block mx-auto') %>
+                            <% end %>
+                            <p class="text-center mt-1"><%= user.name %></p>
+                        </div>
+                        <div class="col-md-10 my-auto">
+                            <%= comment.comment %>
+                        </div>
+                        <% if user == current_user || content.user_id == current_user.id %>
+                            <%= form_with url: comment_path(comment.id), method: :delete, class: 'w-100', local: true do |f| %>
+                                <%= button_tag type: "submit", class: "btn btn-danger float-right mt-1", title: '削除', data: {confirm: "コメントを削除します"} do %>
+                                    <i class="far fa-comments"></i> コメントの削除
+                                <% end %>
+                            <% end %>
+                        <% end %>
+                    </div>
+                </div>
+        <% end %>
+        </div>
+
+        <div class="row w-100 mx-0 my-5">
+            <%= form_with model: @comment, url: comments_path, class: 'w-100', local: true do |f| %>
+                <%= f.hidden_field :content_id, value: @content.id %>
+                <%= f.text_area :comment, class: "form-control", rows: 5 %>
+                <%= button_tag type: "submit", class: "btn btn-success float-right mt-1" do %>
+                    <i class="far fa-comments"></i> コメントする
+                <% end %>
+            <% end %>
+        </div>
     </section>
 </div>

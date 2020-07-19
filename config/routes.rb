@@ -25,4 +25,5 @@ Rails.application.routes.draw do
   resources :time_line, only: [:index, :show]
   resources :relationships, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]
+  resources :comments, only: [:create, :destroy]
 end

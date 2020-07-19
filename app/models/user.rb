@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :fav_content, through: :favorites, source: :content
 
+  has_many :comments, dependent: :destroy
+
   validate :validate_user_image
 
   validates :name, presence: true

@@ -9,6 +9,7 @@ class TimeLineController < ApplicationController
   def show
     @content = Content.find(params[:id])
     @user = User.find(@content.user_id)
+    @comment = Comment.where(content_id: @content.id)
     if @content.private == 2
       unless @user.following?(current_user) || current_user.id == @content.user_id
         redirect_back(fallback_location: root_path)
