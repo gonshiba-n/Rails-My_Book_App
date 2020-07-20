@@ -10,6 +10,7 @@ class ContentsController < ApplicationController
   end
 
   def show
+    @comment = Comment.where(content_id: @content.id)
   end
 
   def edit
