@@ -1,6 +1,13 @@
 <div class="container-sm index">
     <section class="content_box">
         <h2>ブックマーク詳細<i class="fas fa-book-open"></i></h2>
+        <div class="text-right">
+            <% if @comment.exists? %>
+                <i class="fas fa-comment fa-2x text-secondary"></i> <%= @comment.count %>
+            <% else %>
+                <i class="far fa-comment fa-2x text-secondary"></i> <%= @comment.count %>
+            <% end %>
+        </div>
     <section class="tables show">
         <table class="table table-hover">
             <tbody>
@@ -68,5 +75,35 @@
  <%#SVG Edit====================%>
     <%= link_to edit_user_content_path, data_toggle: 'tooltip', data_placement: 'topdo', title: '投稿編集'  do %>
         <i class="fas fa-edit fa-4x timeline"></i>
+    <% end %>
+</div>
+ <%#コメント表示====================%>
+<div class="container">
+    <p>コメント:</p>
+    <% @comment.each do |comment| %>
+        <% user = User.find(comment.user_id) %>
+        <% content = Content.find(comment.content_id) %>
+            <div class="card mb-1">
+                <div class="card-body row">
+                    <div class="col-md-2">
+                        <% if user.user_image.attached? %>
+                            <%= image_tag user.user_image.variant(resize:'60x60',border:'10').processed, class: 'd-block mx-auto' %>
+                        <% else %>
+                            <%= image_tag("user_default.jpeg", :size => "80x80", class: 'd-block mx-auto') %>
+                        <% end %>
+                        <p class="text-center mt-1"><%= user.name %></p>
+                    </div>
+                    <div class="col-md-10 my-auto">
+                        <%= comment.comment %>
+                    </div>
+                    <% if user == current_user || content.user_id == current_user.id %>
+                        <%= form_with url: comment_path(comment.id), method: :delete, class: 'w-100', local: true do |f| %>
+                            <%= button_tag type: "submit", class: "btn btn-danger float-right mt-1", title: '削除', data: {confirm: "コメントを削除します"} do %>
+                                <i class="far fa-comment"></i> コメントの削除
+                            <% end %>
+                        <% end %>
+                    <% end %>
+                </div>
+            </div>
     <% end %>
 </div>

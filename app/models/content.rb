@@ -5,6 +5,8 @@ class Content < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :users, foreign_key: :favorites
 
+  has_many :comments, dependent: :destroy
+
   scope :recent, -> { order(updated_at: :desc) }
 
   validates :name, presence: true

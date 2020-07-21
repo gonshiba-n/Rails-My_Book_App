@@ -1,0 +1,7 @@
+<% if comment.exists? %>
+    <i class="fas fa-comment fa-2x text-success"></i>
+    <p class="text-center text-success"><%= comment.count %></p>
+<% else %>
+    <i class="far fa-comment fa-2x text-secondary"></i>
+    <p class="text-center text-secondary"><%= comment.count %></p>
+<% end %>

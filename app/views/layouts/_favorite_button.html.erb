@@ -4,6 +4,7 @@
             <%= hidden_field_tag :content_id, content.id %>
             <%= f.button :type => "submit", class: 'btn btn-block text-warning' do %>
                 <i class="fas fa-star fa-2x"></i>
+                <p><%= content.favorites.count %></p>
             <% end %>
         <% end %>
     <% else %>
@@ -11,6 +12,7 @@
             <%= hidden_field_tag :content_id, content.id %>
             <%= f.button :type => "submit", class: 'btn btn-block text-secondary' do %>
                 <i class="far fa-star fa-2x"></i>
+                <p><%= content.favorites.count %></p>
             <% end %>
         <% end %>
     <% end %>
