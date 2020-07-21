@@ -2,6 +2,7 @@
     <% @favorites.each do |favorite| %>
         <% content = Content.find(favorite.content_id) %>
         <% user = User.find(content.user_id) %>
+        <% comment = Comment.where(content_id: favorite.content_id) %>
         <section class="card mb-3">
             <div class="row justify-content-center contents_container">
                 <div class="col-md-4">
@@ -41,6 +42,11 @@
                 <% end %>
                 <div class="favorites_button">
                     <%= render partial: 'layouts/favorite_button', locals: {content: content} %>
+                </div>
+                <div class="comment_info">
+                    <%= link_to time_line_path(content.id) do %>
+                        <%= render partial: 'layouts/comment', locals: {comment: comment} %>
+                    <% end %>
                 </div>
             </div>
         </section>
