@@ -48,6 +48,9 @@
                 <div class="favorites_button">
                     <%= render partial: 'layouts/favorite_button', locals: {content: @content} %>
                 </div>
+                <div class="comment_info">
+                    <%= render partial: 'layouts/comment', locals: {comment: @comment} %>
+                </div>
                 <%#SVG B====================%>
                 <%= link_to time_line_index_path, data_toggle: 'tooltip', data_placement: 'topdo', title: '戻る'  do %>
                     <i class="fas fa-chevron-circle-left fa-4x plus"></i>
@@ -75,7 +78,7 @@
                             <% if user == current_user || content.user_id == current_user.id %>
                                 <%= form_with url: comment_path(comment.id), method: :delete, class: 'w-100', local: true do |f| %>
                                     <%= button_tag type: "submit", class: "btn btn-danger float-right mt-1", title: '削除', data: {confirm: "コメントを削除します"} do %>
-                                        <i class="far fa-comments"></i> コメントの削除
+                                        <i class="far fa-comment"></i> コメントの削除
                                     <% end %>
                                 <% end %>
                             <% end %>
@@ -89,7 +92,7 @@
                 <%= f.hidden_field :content_id, value: @content.id %>
                 <%= f.text_area :comment, class: "form-control", rows: 5 %>
                 <%= button_tag type: "submit", class: "btn btn-success float-right mt-1" do %>
-                    <i class="far fa-comments"></i> コメントする
+                    <i class="far fa-comment"></i> コメントする
                 <% end %>
             <% end %>
         </div>

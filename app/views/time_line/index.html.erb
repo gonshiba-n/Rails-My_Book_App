@@ -6,6 +6,7 @@
 
         <% @contents.each do |content| %>
             <% user = User.find(content.user_id) %>
+            <% comment = Comment.where(content_id: content.id) %>
             <% unless user.following?(current_user) || current_user.id == content.user_id %>
                 <% if content.private == 2 %>
                     <% next %>
@@ -54,6 +55,11 @@
                     <% end %>
                     <div class="favorites_button">
                         <%= render partial: 'layouts/favorite_button', locals: {content: content} %>
+                    </div>
+                    <div class="comment_info">
+                        <%= link_to time_line_path(content.id) do %>
+                            <%= render partial: 'layouts/comment', locals: {comment: comment} %>
+                        <% end %>
                     </div>
                 </div>
             </section>
