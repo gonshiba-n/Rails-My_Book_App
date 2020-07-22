@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
     if @comment.save
       flash[:notice] = "コメントしました"
       redirect_back(fallback_location: root_path)
+      content.create_notification_comment!(current_user, @comment.id)
     else
       flash[:notice] = "コメントできませんでした"
       redirect_back(fallback_location: root_path)
