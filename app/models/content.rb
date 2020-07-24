@@ -34,26 +34,26 @@ class Content < ApplicationRecord
   end
 
   def create_notification_favorite!(current_user)
-    #DBにすでにお気に入りにされたデータがあるかを格納
+    # DBにすでにお気に入りにされたデータがあるかを格納
     temp = Notification.where([
-        "visitor_id = ? and visited_id = ? and content_id = ? and action = ?",
-        current_user.id,
-        user_id,
-        id,
-        'favorite'
-      ])
-      #tempが空なら作成
+      "visitor_id = ? and visited_id = ? and content_id = ? and action = ?",
+      current_user.id,
+      user_id,
+      id,
+      'favorite',
+    ])
+      # tempが空なら作成
       if temp.blank?
         notification = current_user.active_notifications.new(
           content_id: id,
           visited_id: user_id,
           action: 'favorite'
         )
-        #自分のコンテンツに対するお気に入りは通知済みとしてtrueとしてDBへ格納
+        # 自分のコンテンツに対するお気に入りは通知済みとしてtrueとしてDBへ格納
         if notification.visitor_id == notification.visited_id
           notification.checked = true
         end
-        #バリデーション確認後にDBへセーブする
+        # バリデーション確認後にDBへセーブする
         notification.save if notification.valid?
       end
   end
@@ -76,7 +76,7 @@ class Content < ApplicationRecord
       visited_id: visited_id,
       action: 'comment'
     )
-    #自分のコンテンツに対するコメントは通知済みとしてtrueとしてDBへ格納
+    # 自分のコンテンツに対するコメントは通知済みとしてtrueとしてDBへ格納
     if notification.visitor_id == notification.visited_id
       notification.checked = true
     end

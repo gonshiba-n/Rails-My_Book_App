@@ -22,10 +22,12 @@
                                 <%= f.label :'', for: "checkbox#{@count}",class: 'select-label', id: "select_delete_label#{@count}" %>
                             </td>
                             <td class="text-center">
-                                <% if comment.exists? %>
-                                    <i class="fas fa-comment fa-2x text-secondary"></i> <%= comment.count %>
-                                <% else %>
-                                    <i class="far fa-comment fa-2x text-secondary"></i>
+                                <%= link_to time_line_path(content.id) do %>
+                                    <% if comment.exists? %>
+                                        <i class="fas fa-comment fa-2x text-secondary"></i> <%= comment.count %>
+                                    <% else %>
+                                        <i class="far fa-comment fa-2x text-secondary"></i>
+                                    <% end %>
                                 <% end %>
                             </td>
                             <td> <%= link_to content.name, user_content_path(@user, content) %> </td>
