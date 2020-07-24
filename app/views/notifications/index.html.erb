@@ -1,0 +1,12 @@
+<div class="container-md index content_box">
+<h2 class="pb-4">お知らせ<i class="far fa-bell"></i></h2>
+    <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
+    <% if notifications.exists? %>
+        <%= render partial: 'notifications', locals: {notifications: notifications} %>
+        <%= paginate notifications %>
+    <% else %>
+        <hr>
+        <p class="p-3">| 通知はありません</p>
+        <hr>
+    <% end %>
+</div>

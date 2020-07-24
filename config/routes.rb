@@ -26,4 +26,5 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]
   resources :comments, only: [:create, :destroy]
+  resources :notifications, only: [:index]
 end

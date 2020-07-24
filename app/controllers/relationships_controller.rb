@@ -5,6 +5,7 @@ before_action :set_user
     following = current_user.follow(@user)
     if following.save
       flash[:notice] = "#{@user.name}をフォローしました"
+      @user.create_notification_follow!(current_user)
       redirect_back(fallback_location: root_path)
     else
       flash.now[:notice] = "#{@user.name}のフォローに失敗しました"

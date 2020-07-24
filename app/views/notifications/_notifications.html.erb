@@ -1,0 +1,48 @@
+<% notifications.each do |notification|%>
+    <% visitor = User.find(notification.visitor_id) %>
+    <% visited = notification.visited %>
+    <div class="col-md-12 mx-auto p-0">
+        <form class="form">
+            <% if visitor.user_image.attached? %>
+                <%= image_tag visitor.user_image.variant(resize:'30x30').processed %>
+            <% else %>
+                <%= image_tag("user_default.jpeg", :size => "30x30") %>
+            <% end %>
+            <%= link_to user_other_user_path(visitor.id) do %>
+                <strong><%= visitor.name %></strong>
+            <% end %>
+            さんが
+            <% case notification.action %>
+            <% when 'follow' then %>
+                <%= "あなたをフォローしました" %>
+            <% when 'favorite' then %>
+                <%= link_to 'あなたの投稿', time_line_path(notification.content_id), style: "font-weight: bold;" %>をお気に入りに登録しました
+            <% when 'comment' then %>
+                <% if notification.content.user_id == visited.id %>
+                    <%= link_to "あなたの投稿", time_line_path(notification.content_id), style: "font-weight: bold;" %>
+                <% else %>
+                    <%= link_to user_other_user_path(visitor.id) do %>
+                        <% if visitor.user_image.attached? %>
+                            <%= image_tag notification.content.user.user_image.variant(resize:'30x30').processed %>
+                        <% else %>
+                            <%= image_tag("user_default.jpeg", :size => "30x30") %>
+                        <% end %>
+                    <% end %>
+                    <%= link_to time_line_path(notification.content_id) do %>
+                        <strong><%= notification.content.user.name + 'さんの投稿' %></strong>
+                    <% end %>
+                <% end %>
+                にコメントしました
+                <p class="text-muted mb-0">
+                    <%= link_to time_line_path(notification.content_id) do %>
+                        コメント:<%= Comment.find_by(id: notification.comment_id)&.comment %>
+                    <% end %>
+                </p>
+            <% end %>
+        </form>
+        <div class="small text-muted text-right">
+            <%= time_ago_in_words(notification.created_at).upcase %>
+        </div>
+        <hr class="w-100">
+    </div>
+<% end %>

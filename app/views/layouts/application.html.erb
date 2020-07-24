@@ -1,60 +1,65 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>MyBook</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <head>
+		<title>MyBook</title>
+		<%= csrf_meta_tags %>
+		<%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%#google-web-font nav-brand用%>
-    <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
-    <%#Font-awasome%>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css" type="text/css" media="all" />
-  </head>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+		<%#google-web-font nav-brand用%>
+		<link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
+		<%#Font-awasome%>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css" type="text/css" media="all" />
+	</head>
 
-  <body>
-    <header>
-      <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light header-nav">
-        <%= link_to "まいぶく", :root, class: 'navbar-brand' %>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto">
-          <% if user_signed_in? %>
-            <li class="nav-item">
-            <%= link_to "ログイン中: #{current_user.name}", user_contents_path(current_user.id), class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link' %>
-            </li>
-          <% else %>
-            <li class="nav-item">
-              <%= link_to "新規登録", root_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "ログイン", new_user_session_path, class: 'nav-link' %>
-            </li>
-          <% end %>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Notice<i class="fas fa-bell fa-fw faa-bounce animated"></i></a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </header>
-      <%= yield %>
-
-    <footer class=".conteiner-fluid">
-      <div><a class="footer-logo" href="#">まいぶく</a></div>
-      <p>Copyright &copy; Gonshiba</p>
-
-    </footer>
-  </body>
+	<body>
+		<header>
+			<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light header-nav">
+				<%= link_to "まいぶく", :root, class: 'navbar-brand' %>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav ml-auto">
+						<% if user_signed_in? %>
+							<li class="nav-item">
+								<%= link_to "ログイン中: #{current_user.name}", user_contents_path(current_user.id), class: 'nav-link' %>
+							</li>
+							<li class="nav-item">
+								<%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link' %>
+							</li>
+						<% else %>
+							<li class="nav-item">
+								<%= link_to "新規登録", root_path, class: 'nav-link' %>
+							</li>
+							<li class="nav-item">
+								<%= link_to "ログイン", new_user_session_path, class: 'nav-link' %>
+							</li>
+						<% end %>
+						<li class="nav-item">
+							<a class="nav-link" href="#">About</a>
+						</li>
+						<% if user_signed_in? %>
+							<li class="nav-item">
+								<%= link_to notifications_path, class: 'nav-link' do %>
+									<% if  unchecked_notifications.any? %>
+										Notification<i class="fas fa-bell fa-fw faa-bounce animated text-warning"></i>
+									<% else %>
+										Notification<i class="fas fa-bell fa-fw"></i>
+									<% end %>
+								<% end %>
+							</li>
+						<% end %>
+					</ul>
+				</div>
+			</nav>
+		</header>
+		<%= yield %>
+		<footer class=".conteiner-fluid">
+			<div><a class="footer-logo" href="#">まいぶく</a></div>
+			<p>Copyright &copy; Gonshiba</p>
+		</footer>
+	</body>
 </html>
