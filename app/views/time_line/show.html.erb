@@ -13,7 +13,7 @@
                     <%= link_to user_other_user_path(@content.user_id) do %>
                         <div class="my-2">
                             <% if user.user_image.attached? %>
-                                <%= image_tag user.user_image.variant(resize:'100x100',border:'10').processed, class: 'time_line_user_image mx-auto' %>
+                                <%= image_tag user.user_image.variant(resize:'100x100').processed, class: 'time_line_user_image mx-auto' %>
                             <% else %>
                                 <%= image_tag("user_default.jpeg", class: 'time_line_user_image mx-auto', :size => "120x120") %>
                             <% end %>
@@ -38,7 +38,7 @@
                         <p class="card-text">説明はありません</p>
                     <% end %>
                     </div>
-                    <%= link_to @content.url, @content.url, class: 'd-block card-text' %>
+                    <%= link_to @content.url, @content.url, class: 'd-block card-text url' %>
                     <p class="card-text text-right">
                         <time datetime="<%= @content.created_at %>">
                             投稿日時：<%= time_ago_in_words(@content.updated_at) %>前
@@ -65,12 +65,14 @@
                     <div class="card mb-1">
                         <div class="card-body row">
                             <div class="col-md-2">
-                                <% if user.user_image.attached? %>
-                                    <%= image_tag user.user_image.variant(resize:'60x60',border:'10').processed, class: 'd-block mx-auto' %>
-                                <% else %>
-                                    <%= image_tag("user_default.jpeg", :size => "80x80", class: 'd-block mx-auto') %>
+                                <%= link_to user_other_user_path(user)do %>
+                                    <% if user.user_image.attached? %>
+                                        <%= image_tag user.user_image.variant(resize:'60x60').processed, class: 'd-block mx-auto' %>
+                                    <% else %>
+                                        <%= image_tag("user_default.jpeg", :size => "80x80", class: 'd-block mx-auto') %>
+                                    <% end %>
+                                    <p class="text-center mt-1"><%= user.name %></p>
                                 <% end %>
-                                <p class="text-center mt-1"><%= user.name %></p>
                             </div>
                             <div class="col-md-10 my-auto">
                                 <%= comment.comment %>

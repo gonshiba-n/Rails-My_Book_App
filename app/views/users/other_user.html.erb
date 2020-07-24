@@ -72,7 +72,7 @@
                                     <p class="card-text">説明はありません</p>
                                 <% end %>
                             </div>
-                            <%= link_to content.url, content.url, class: 'd-block card-text' %>
+                            <%= link_to content.url, content.url, class: 'd-block card-text url' %>
                             <p class="card-text text-right">
                                 <time datetime="<%= content.created_at %>">
                                     投稿日時：<%= time_ago_in_words(content.updated_at) %>前
