@@ -43,7 +43,9 @@
               <a class="nav-link" href="#">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Notice<i class="fas fa-bell fa-fw faa-bounce animated"></i></a>
+              <%= link_to notifications_path, class: 'nav-link' do %>
+                Notification<i class="fas fa-bell fa-fw faa-bounce animated"></i>
+              <% end %>
             </li>
           </ul>
         </div>
