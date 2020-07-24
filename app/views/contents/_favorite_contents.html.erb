@@ -9,7 +9,7 @@
                     <%= link_to user_other_user_path(user) do %>
                         <div class="my-2">
                             <% if user.user_image.attached? %>
-                                <%= image_tag user.user_image.variant(resize:'60x60',border:'10').processed, class: 'favorites_user_image mx-auto' %>
+                                <%= image_tag user.user_image.variant(resize:'60x60').processed, class: 'favorites_user_image mx-auto p-3' %>
                             <% else %>
                                 <%= image_tag("user_default.jpeg", class: 'favorites_user_image mx-auto', :size => "80x80") %>
                             <% end %>

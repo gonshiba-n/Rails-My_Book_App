@@ -5,7 +5,7 @@
         <div class="row user-profile my-5">
             <div class="col-md-3">
                 <% if @other_user.user_image.attached? %>
-                    <%= image_tag @other_user.user_image.variant(resize:'150x150',border:'10').processed, class: 'user_image' %>
+                    <%= image_tag @other_user.user_image.variant(resize:'150x150').processed, class: 'user_image' %>
                 <% else %>
                     <%= image_tag("user_default.jpeg", :size => "100x100",class: 'default_image') %>
                 <% end %>
@@ -52,7 +52,7 @@
                     <%= link_to user_other_user_path(content.user_id) do %>
                         <div class="my-2">
                             <% if content.user.user_image.attached? %>
-                                <%= image_tag content.user.user_image.variant(resize:'100x100',border:'10').processed, class: 'time_line_user_image mx-auto' %>
+                                <%= image_tag content.user.user_image.variant(resize:'100x100').processed, class: 'time_line_user_image mx-auto' %>
                             <% else %>
                                 <%= image_tag("user_default.jpeg", class: 'time_line_user_image mx-auto', :size => "120x120") %>
                             <% end %>
