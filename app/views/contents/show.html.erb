@@ -62,16 +62,16 @@
 
 
  <%#SVG B====================%>
-    <%= link_to user_contents_path, data_toggle: 'tooltip', data_placement: 'topdo', title: '戻る'  do %>
-        <i class="fas fa-chevron-circle-left fa-4x plus"></i>
+    <%= link_to user_contents_path do %>
+        <i class="fas fa-chevron-circle-left fa-4x plus" data-toggle="tooltip" title="もどる"></i>
     <% end %>
  <%#SVG Delete==========================%>
-    <%= link_to user_content_path, method: :delete, data_toggle: 'tooltip', data_placement: 'topdo', title: '削除',data: {confirm: "ブックマークを削除します"} do %>
-        <i class="fas fa-minus-circle fa-4x delete"></i>
+    <%= link_to user_content_path, method: :delete, data: {confirm: "ブックマークを削除します"} do %>
+        <i class="fas fa-minus-circle fa-4x delete" data-toggle="tooltip" title="ブックマークの削除"></i>
     <% end %>
  <%#SVG Edit====================%>
-    <%= link_to edit_user_content_path, data_toggle: 'tooltip', data_placement: 'topdo', title: '投稿編集'  do %>
-        <i class="fas fa-edit fa-4x timeline"></i>
+    <%= link_to edit_user_content_path do %>
+        <i class="fas fa-edit fa-4x timeline" data-toggle="tooltip" title="ブックマークの編集"></i>
     <% end %>
 </div>
  <%#コメント表示====================%>

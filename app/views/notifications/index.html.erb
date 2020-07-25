@@ -9,4 +9,8 @@
         <p class="p-3">| 通知はありません</p>
         <hr>
     <% end %>
+    <%#SVG B====================%>
+    <%= link_to user_contents_path(current_user) do %>
+        <i class="fas fa-chevron-circle-left fa-4x plus" data-toggle="tooltip" title="もどる"></i>
+    <% end %>
 </div>

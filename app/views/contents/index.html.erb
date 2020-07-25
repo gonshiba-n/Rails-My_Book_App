@@ -33,12 +33,12 @@
 
  <%#検索=============================%>
     <section class="search-section">
-			<%= search_form_for @q , url: user_contents_path do |f| %>
-					<%= f.search_field :name_or_description_or_category_cont, id: 'search-box', class: 'search-box' %>
-					<%= f.label :name, for: 'search-box' do %>
+        <%= search_form_for @q , url: user_contents_path do |f| %>
+            <%= f.search_field :name_or_description_or_category_cont, id: 'search-box', class: 'search-box' %>
+            <%= f.label :name, for: 'search-box' do %>
                 <i class="fas fa-search search-icon"></i>
             <% end %>
-			<%= f.submit "検索", id: 'search-submit' %>
+            <%= f.submit "検索", id: 'search-submit' %>
         <% end %>
     </section>
  <%#テーブル=============================%>
@@ -65,13 +65,12 @@
 
 
  <%#SVG +==========================%>
-    <%= link_to new_user_content_path, data_toggle: 'tooltip', data_placement: 'topdo', title: '新規作成' do %>
-        <i class="fas fa-plus-circle fa-4x plus"></i>
+    <%= link_to new_user_content_path do %>
+        <i class="fas fa-plus-circle fa-4x plus" data-toggle="tooltip" title="ブックマークの新規作成"></i>
     <% end %>
  <%#SVG Timeline====================%>
-    <%= link_to time_line_index_path, data_toggle: 'tooltip', data_placement: 'topdo', title: 'タイムライン'  do %>
-        <%#= embedded_svg('timeline.svg', class: "timeline")%>
-        <i class="fas fa-comments fa-4x timeline"></i>
+    <%= link_to time_line_index_path do %>
+        <i class="fas fa-comments fa-4x timeline" data-toggle="tooltip" title="タイムライン"></i>
     <% end %>
 </div>
 

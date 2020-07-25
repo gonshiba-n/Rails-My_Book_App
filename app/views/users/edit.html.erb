@@ -39,10 +39,10 @@
     <% end %>
 </div>
 <%#SVG Edit====================%>
-<%= link_to edit_user_registration_url, data_toggle: 'tooltip', data_placement: 'topdo', title: '詳細編集'  do %>
-    <i class="fas fa-edit fa-4x delete"></i>
+<%= link_to edit_user_registration_url do %>
+    <i class="fas fa-edit fa-4x delete" data-toggle="tooltip" title="ユーザー詳細編集"></i>
 <% end %>
 <%#SVG B====================%>
-<%= link_to user_contents_path(current_user.id), data_toggle: 'tooltip', data_placement: 'topdo', title: '戻る'  do %>
-    <i class="fas fa-chevron-circle-left fa-4x plus"></i>
+<%= link_to user_contents_path(current_user.id) do %>
+    <i class="fas fa-chevron-circle-left fa-4x plus" data-toggle="tooltip" title="もどる"></i>
 <% end %>

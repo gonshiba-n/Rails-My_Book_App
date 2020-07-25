@@ -39,8 +39,8 @@
     </div>
   </div>
    <%#SVG B====================%>
-  <%= link_to user_path(current_user), data_toggle: 'tooltip', data_placement: 'topdo', title: '戻る'  do %>
-      <i class="fas fa-chevron-circle-left fa-4x plus"></i>
+  <%= link_to user_path(current_user) do %>
+      <i class="fas fa-chevron-circle-left fa-4x plus" data-toggle="tooltip" title="もどる"></i>
   <% end %>
 
 </section>

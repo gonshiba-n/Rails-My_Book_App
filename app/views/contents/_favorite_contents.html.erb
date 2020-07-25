@@ -33,11 +33,14 @@
                         <% end %>
                         </div>
                         <%= link_to content.url, content.url, class: 'd-block card-text url' %>
-                        <p class="card-text text-right">
-                            <time datetime="<%= content.created_at %>">
-                                投稿日時：<%= time_ago_in_words(content.updated_at) %>前
-                            </time>
-                        </p>
+                        <div class="text-right mt-1">
+                            <span>カテゴリー:<%= content.category %></span>
+                            <span class="card-text text-right">
+                                <time datetime="<%= content.created_at %>">
+                                    投稿日時：<%= time_ago_in_words(content.updated_at) %>前
+                                </time>
+                            </span>
+                        </div>
                     </div>
                 <% end %>
                 <div class="favorites_button">
@@ -53,6 +56,6 @@
     <% end %>
     <%#SVG Delete==========================%>
     <%= button_tag class: 'select_submit',local: true, disabled: true do %>
-        <i class="fas fa-minus-circle fa-4x delete disabled"></i>
+        <i class="fas fa-minus-circle fa-4x delete disabled" data-toggle="tooltip" title="お気に入りでは使用できません"></i>
     <% end %>
 </section>
