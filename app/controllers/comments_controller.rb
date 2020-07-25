@@ -8,6 +8,12 @@ class CommentsController < ApplicationController
       flash[:notice] = "コメントしました"
       redirect_back(fallback_location: root_path)
       content.create_notification_comment!(current_user, @comment.id)
+    elsif @comment.invalid?
+      @comment.errors.full_messages.each do |message|
+        @error_comment = message
+      end
+      flash[:notice] = @error_comment
+      redirect_back(fallback_location: root_path)
     else
       flash[:notice] = "コメントできませんでした"
       redirect_back(fallback_location: root_path)
@@ -26,7 +32,6 @@ class CommentsController < ApplicationController
   end
 
   private
-
     def comment_params
       params.require(:comment).permit(:comment, :content_id)
     end

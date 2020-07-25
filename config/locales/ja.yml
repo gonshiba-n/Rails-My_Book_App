@@ -9,6 +9,7 @@ ja:
   models:
     content:
     user:
+    comment:
   attributes:
     content:
     id: ID
@@ -23,6 +24,8 @@ ja:
     user:
     user_image: ユーザー画像
     introduction: ユーザープロフィール
+    comment:
+    comment: コメント
 
   date:
     abbr_day_names:
