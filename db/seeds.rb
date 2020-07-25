@@ -66,7 +66,7 @@ end
       description: "Taroの勉強用サイトDEMO#{no}",
       category: 'Webサイト',
       private: 1,
-      user_id: 3
+      user_id: 2
     }
   )
 end
