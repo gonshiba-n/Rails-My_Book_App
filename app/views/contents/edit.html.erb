@@ -44,10 +44,6 @@
                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                     <div class="card-body">
                         <div class="form-group">
-                            <%= f.label :tag, "タグ" %>
-                            <%= f.text_field :tag, class: 'form-control', id: 'content_tag', placeholder: '#タグを入力してください' %>
-                        </div>
-                        <div class="form-group">
                             <%= f.label :private, "投稿公開範囲" %>
                             <%= f.select :private,[
                                 ["1.全てのユーザーに投稿を公開", 1],
