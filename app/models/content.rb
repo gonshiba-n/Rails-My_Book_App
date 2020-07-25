@@ -11,13 +11,14 @@ class Content < ApplicationRecord
 
   scope :recent, -> { order(updated_at: :desc) }
 
+  #バリデーション============================
   validates :name, presence: true
   validates :name, length: { maximum: 35 }
 
   validates :url, presence: true
   validates :url, format: /\A#{URI::regexp(%w(http https))}\z/
 
-  # validates :description, lemgth{ maximum: 160 }
+  validates :description, length: { maximum: 160 }
 
   validates :private, presence: true
   validates :private, length: { maximum: 1 }
