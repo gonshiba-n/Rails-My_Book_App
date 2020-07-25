@@ -22,7 +22,9 @@ Rails.application.routes.draw do
     delete "contents" => "contents#select_destroy", as: 'select_destroy'
   end
 
-  resources :time_line, only: [:index, :show]
+  resources :time_line, only: [:index, :show] do
+    get 'search/index'
+  end
   resources :relationships, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]
   resources :comments, only: [:create, :destroy]

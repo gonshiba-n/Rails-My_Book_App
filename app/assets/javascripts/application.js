@@ -18,6 +18,5 @@
 //= require popper
 //= require bootstrap-sprockets
 
-
 // 検索バー contents/index
 document.addEventListener("", function () { }, true);

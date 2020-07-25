@@ -73,11 +73,14 @@
                                 <% end %>
                             </div>
                             <%= link_to content.url, content.url, class: 'd-block card-text url' %>
-                            <p class="card-text text-right">
-                                <time datetime="<%= content.created_at %>">
-                                    投稿日時：<%= time_ago_in_words(content.updated_at) %>前
-                                </time>
-                            </p>
+                            <div class="text-right mt-1">
+                                <span>カテゴリー:<%= content.category %></span>
+                                <span class="card-text text-right">
+                                    <time datetime="<%= content.created_at %>">
+                                        投稿日時：<%= time_ago_in_words(content.updated_at) %>前
+                                    </time>
+                                </span>
+                            </div>
                         </div>
                     <% end %>
                     <div class="favorites_button">
@@ -92,7 +95,7 @@
         </div>
     </section>
     <%#SVG B====================%>
-    <%= link_to time_line_index_path, data_toggle: 'tooltip', data_placement: 'topdo', title: '戻る'  do %>
-        <i class="fas fa-chevron-circle-left fa-4x plus"></i>
+    <%= link_to time_line_index_path do %>
+        <i class="fas fa-chevron-circle-left fa-4x plus" data-toggle="tooltip" title="もどる"></i>
     <% end %>
 </div>
