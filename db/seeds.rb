@@ -31,7 +31,7 @@ user = [
     password: 'gonshiba',
     introduction: 'ごんしばです。バックエンドエンジニアとして高速で成長して参ります',
     confirmed_at: '2020-07-26 03:37:42.086451'
-  }
+  },
 ]
 user.each do |record|
   User.create!(record) unless User.find_by(email: record[:email])
@@ -39,11 +39,9 @@ end
 
 # フォロー=============================================================
 user1 = User.find(1)
-user2 = User.find(2)
 user3 = User.find(3)
 user3.follow(user1)
 user1.follow(user3)
-
 
 # コンテンツデータ=============================================================
 (1..5).each do |no|
@@ -140,13 +138,11 @@ Content.create!(
       category: 'プログラミング',
       private: 2,
       user_id: 3
-    }
+    },
   ]
 )
 
 content1 = Content.find(1)
-content2 = Content.find(2)
-content3 = Content.find(3)
 content4 = Content.find(4)
 
 # コメント=============================================================

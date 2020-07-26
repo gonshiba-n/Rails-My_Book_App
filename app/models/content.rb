@@ -11,7 +11,7 @@ class Content < ApplicationRecord
 
   scope :recent, -> { order(updated_at: :desc) }
 
-  #バリデーション============================
+  # バリデーション============================
   validates :name, presence: true
   validates :name, length: { maximum: 35 }
 
