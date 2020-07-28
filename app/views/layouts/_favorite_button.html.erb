@@ -1,19 +1,17 @@
-<div class="favorite_button">
-    <% if current_user.like?(content) %>
-        <%= form_for(current_user.favorites.find_by(content_id: content.id), html: { method: :delete }) do |f| %>
-            <%= hidden_field_tag :content_id, content.id %>
-            <%= f.button :type => "submit", class: 'btn btn-block text-warning' do %>
-                <i class="fas fa-star fa-2x"></i>
-                <p><%= content.favorites.count %></p>
-            <% end %>
-        <% end %>
-    <% else %>
-        <%= form_for(current_user.favorites.build) do |f| %>
-            <%= hidden_field_tag :content_id, content.id %>
-            <%= f.button :type => "submit", class: 'btn btn-block text-secondary' do %>
-                <i class="far fa-star fa-2x"></i>
-                <p><%= content.favorites.count %></p>
-            <% end %>
+<% if current_user.like?(content) %>
+    <%= form_for(current_user.favorites.find_by(content_id: content.id), html: { method: :delete }) do |f| %>
+        <%= hidden_field_tag :content_id, content.id %>
+        <%= f.button :type => "submit", class: 'btn btn-block text-warning' do %>
+            <i class="fas fa-star fa-2x"></i>
+            <p><%= content.favorites.count %></p>
         <% end %>
     <% end %>
-</div>
+<% else %>
+    <%= form_for(current_user.favorites.build) do |f| %>
+        <%= hidden_field_tag :content_id, content.id %>
+        <%= f.button :type => "submit", class: 'btn btn-block text-secondary' do %>
+            <i class="far fa-star fa-2x"></i>
+            <p><%= content.favorites.count %></p>
+        <% end %>
+    <% end %>
+<% end %>

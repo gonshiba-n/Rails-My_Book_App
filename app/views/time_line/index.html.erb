@@ -63,11 +63,9 @@
                             </div>
                         </div>
                     <% end %>
-                    <div class="favorites_button">
+                    <div class="favorites_comment_button">
                         <%= render partial: 'layouts/favorite_button', locals: {content: content} %>
-                    </div>
-                    <div class="comment_info">
-                        <%= link_to time_line_path(content.id) do %>
+                        <%= link_to time_line_path(content.id), class: 'd-block text-center' do %>
                             <%= render partial: 'layouts/comment', locals: {comment: comment} %>
                         <% end %>
                     </div>
