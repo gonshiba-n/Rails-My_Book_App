@@ -18,7 +18,7 @@
             <% unless user.following?(current_user) || current_user.id == content.user_id %>
                 <% if content.private == 2 %>
                     <% next %>
-                <%end%>
+                <% end %>
             <% end %>
             <section class="card mb-3">
                 <div class="row justify-content-center content_container">

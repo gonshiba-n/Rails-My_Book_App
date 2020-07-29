@@ -130,14 +130,14 @@ input, select {
     box-shadow:none !important;
 }
 /* ======================================================================================== */
-
-
 /* ここから下にCSSを記述 */
+$color: #6C757D;
+
 a{
-    color: #53595f;
+    color: $color;
 }
 a:hover{
-    color: #53595f;
+    color: $color;
 }
 .index{
     padding-top: 5rem;
@@ -222,7 +222,7 @@ footer p{
     position: fixed;
     bottom: 40px;
     right: 120px;
-    color: #53595f;
+    color: $color;
 }
 
 .delete:hover{
@@ -233,7 +233,7 @@ footer p{
 .disabled:hover{
     opacity: 1;
     cursor: pointer;
-    color: #53595f;
+    color: $color;
     opacity: 0.4;
 }
 
@@ -314,7 +314,7 @@ footer p{
     margin: 3% auto;
 }
 .unfollow_btn:hover{
-    background:#6C757D;
+    background:$color;
     color:#fff;
     border: none;
 }
