@@ -1,7 +1,7 @@
 class TimeLineController < ApplicationController
   def index
     @users = User.all
-    @contents = Content.where(private: [1,2]).order(updated_at: :desc)
+    @contents = Content.where(private: [1, 2]).order(updated_at: :desc)
     @q = @contents.ransack(params[:q])
     @contents = @q.result(distinct: true).page(params[:page]).per(10)
   end
