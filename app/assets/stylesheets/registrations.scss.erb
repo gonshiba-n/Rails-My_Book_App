@@ -12,6 +12,7 @@ h1,h2,p{
     height: 100%;
     background-image: url(<%= asset_path "top-view-m.jpg" %>);
     background-size: cover;
+    background-position: top center;
     position: relative;
     padding-bottom: 5%;
 
@@ -36,7 +37,6 @@ h1,h2,p{
         margin-top: 3%;
         background-color: rgba(255, 255, 255, 0.8);
         max-width: 550px;
-
     }
 
     h1{
@@ -78,6 +78,19 @@ h1,h2,p{
     left: 0;
     content: ' ';
 }
+
+    @media screen and (max-width: 768px) {
+        .registrations_row{
+        margin: 0!important;
+    }
+
+        .card {
+            max-width: 100%!important;
+            width: 100%!important;
+            margin: 0 auto;
+        }
+    }
+
 
 //sign_up画面====================================
 

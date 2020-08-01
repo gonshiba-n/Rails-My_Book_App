@@ -5,7 +5,7 @@
 
 // contents_index(ユーザー画面、コンテンツ一覧画面)
 // ユーザーセクション==============================
-
+$color: #6C757D;
 .user-profile{
     position: relative;
 
@@ -44,6 +44,29 @@
     max-width: 150px;
     min-width: 150px;
 }
+@media screen and (max-width: 768px) {
+    .none{
+        display: none;
+    }
+    .user_image{
+        display: block;
+        margin: 0 auto;
+        height: auto;
+        width: 100%;
+        max-width: 40px;
+        min-width: 40px;
+        margin-top: 15%;
+    }
+    .default_image{
+        display: block;
+        margin: 0 auto;
+        height: auto;
+        width: 100%;
+        max-width: 60px;
+        min-width: 60px;
+        margin-top: 15%;
+    }
+}
 
 
 
@@ -79,7 +102,7 @@ $tl: 0.6s; // transition length
         color: black;
         & + label .search-icon {    color: black;    }
     }
-      &:not(:focus) {    text-indent:-5000px;    } // for more-graceful falling back (:not browsers likely support indent)
+    &:not(:focus) {    text-indent:-5000px;    }
     }
 
     #search-submit {
@@ -133,15 +156,13 @@ $tl: 0.6s; // transition length
 .alert-dismissible .close {
     padding: 0.4rem 1.25rem !important ;
 }
-    .close:focus{
-        outline: 0;
-        box-shadow: none;
-    }
+.close:focus{
+    outline: 0;
+    box-shadow: none;
+}
+
 
 // index_html select_check_box
-
-$color: #6C757D; /* Red */
-
 .select-label {
     font-family: sans-serif;
     cursor: pointer;

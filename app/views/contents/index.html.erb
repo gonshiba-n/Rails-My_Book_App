@@ -1,17 +1,17 @@
-<div class="container-sm index mt-5">
+<div class="container-sm index mt-md-5">
     <%= render partial: 'layouts/flash' %>
 
  <%#ユーザー=============================%>
     <section>
         <div class="row user-profile">
-            <div class="col-md-3">
+            <div class="col-sm-3">
                 <% if current_user.user_image.attached? %>
                     <%= image_tag current_user.user_image.variant(resize:'180x180').processed, class: 'user_image' %>
                 <% else %>
                     <%= image_tag("user_default.jpeg", :size => "150x150",class: 'default_image') %>
                 <% end %>
             </div>
-            <div class="col-md-8 user-discription">
+            <div class="col-sm-8 user-discription">
                 <h2><%= current_user.name %></h2>
                 <p><%= current_user.introduction %></p>
                 <div class="row">
