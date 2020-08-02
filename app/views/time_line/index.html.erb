@@ -1,4 +1,4 @@
-<div class= "container-md index time_line">
+<div class= "container index time_line">
     <%= render partial: 'layouts/flash' %>
 
     <section>
@@ -22,7 +22,7 @@
             <% end %>
             <section class="card mb-3">
                 <div class="row justify-content-center content_container">
-                    <div class="col-md-4">
+                    <div class="col-4">
                         <%= link_to user_other_user_path(user) do %>
                             <div class="my-2">
                                 <% if user.user_image.attached? %>
@@ -38,7 +38,7 @@
                         <%= render partial: 'layouts/follow_button', locals: {user: user} %>
                     </div>
                     <%= link_to time_line_path(content.id) do %>
-                        <div class="col-md-8 card-body user-discription">
+                        <div class="col-8 card-body user-discription">
                             <div class="content_info mb-2">
                                 <% if content.private == 2 %>
                                     <h3 class="card-title title"><%= content.name %><i class="fa fa-lock mt-n2 ml-3" aria-hidden="true"></i></h3>
