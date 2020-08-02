@@ -9,6 +9,12 @@
         bottom: 3%;
         right: 3%;
     }
+    @media screen and (max-width: 768px) {
+        .relationship-btn{
+            position: relative;
+            margin: 0 0 0 auto;
+        }
+    }
 }
 
 .other_user{

@@ -9,7 +9,7 @@
 
     <%= form_with model: @user, url: user_path, id: 'edit_user_profile', class: 'edit_user_profile', local: true, scope: :session do |f| %>
         <section class="row user_introduction pb-4">
-                <div class="col-4">
+                <div class="col-4 pl-2 pr-0">
                     <div class="form-group">
                         <%= f.label :user_image,'写真・動画のアップロード', for: 'user_image' %>
                         <%= f.file_field :user_image, class: 'form-control-file exampleFormControl' %>

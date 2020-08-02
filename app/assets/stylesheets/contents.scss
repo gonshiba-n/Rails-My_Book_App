@@ -314,4 +314,10 @@ $tl: 0.6s; // transition length
         top: 45%;
         right: 3.2%;
     }
+@media screen and (max-width: 768px) {
+    .content_info{
+        height: 85%;
+        width: 90%;
+    }
+}
 }
