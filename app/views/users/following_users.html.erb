@@ -3,7 +3,7 @@
     <% @user.followings.each do |user| %>
         <section class="card mb-3">
             <div class="row justify-content-center">
-                <div class="col-md-4 mx-auto my-auto">
+                <div class="col-4 mx-auto my-auto">
                     <%= link_to user_other_user_path(user) do %>
                         <div class="my-2">
                             <% if user.user_image.attached? %>
@@ -17,7 +17,7 @@
                 </div>
 
                 <%= link_to user_other_user_path(user) do %>
-                <div class="col-md-8 card-body user-discription">
+                <div class="col-8 card-body user-discription">
                     <div class="content_info">
                         <div class="time_line_user_name my-2">
                             <p class="mx-auto my-3 text-dark"><%= user.name %></p>

@@ -43,4 +43,15 @@
     a:hover, a h3:hover, a p:hover{
         color: rgb(105, 105, 105);
     }
+    @media screen and (max-width: 768px) {
+        .time_line_user_image{
+            display: block;
+            height: 60%;
+            width: 60%;
+        }
+        .content_info{
+            height: 80%;
+            width: 90%;
+        }
+    }
 }

@@ -28,7 +28,7 @@
                                 <% if user.user_image.attached? %>
                                     <%= image_tag user.user_image.variant(resize:'100x100').processed, class: 'time_line_user_image mx-auto' %>
                                 <% else %>
-                                    <%= image_tag("user_default.jpeg", class: 'time_line_user_image mx-auto', :size => "120x120") %>
+                                    <%= image_tag("user_default.jpeg", class: 'time_line_user_image mx-auto', :size => "100x100") %>
                                 <% end %>
                             </div>
                             <div class="time_line_user_name my-2">
@@ -55,7 +55,7 @@
                             <%= link_to content.url, content.url, class: 'd-block card-text url' %>
                             <div class="text-right mt-1">
                                 <span>カテゴリー:<%= content.category %></span>
-                                <span class="card-text text-right">
+                                <span class="card-text text-right d-block d-md-inline">
                                     <time datetime="<%= content.created_at %>">
                                         投稿日時：<%= time_ago_in_words(content.updated_at) %>前
                                     </time>

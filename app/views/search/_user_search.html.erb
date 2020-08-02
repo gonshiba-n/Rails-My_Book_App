@@ -2,7 +2,7 @@
         <% @users.each do |user| %>
         <section>
             <div class="row user-profile my-3">
-                <div class="col-md-3">
+                <div class="col-3">
                     <%= link_to user_other_user_path(user.id) do %>
                         <% if user.user_image.attached? %>
                             <%= image_tag user.user_image.variant(resize:'100x100').processed, class: 'd-block m-auto' %>
@@ -11,7 +11,7 @@
                         <% end %>
                     <% end %>
                 </div>
-                <div class="col-md-9 user-discription">
+                <div class="col-9 user-discription">
                     <div class="user_name">
                         <%= link_to user_other_user_path(user.id) do %>
                             <h2><%= user.name %></h2>
@@ -19,12 +19,12 @@
                         <% end %>
                     </div>
                     <div class="row mt-3 position-relative">
-                        <div class="col-md-3 follow">
+                        <div class="col-3 follow">
                             <%= link_to user_following_users_path(user.id), class:'text-dark' do %>
                                 フォロー <%= user.followings.count %>
                             <% end %>
                         </div>
-                        <div class="col-md-3 follower">
+                        <div class="col-3 follower">
                             <%= link_to user_follower_users_path(user.id), class:'text-dark' do %>
                                 フォロワー <%= user.followers.count %>
                             <% end %>

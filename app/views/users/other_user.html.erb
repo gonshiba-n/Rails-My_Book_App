@@ -3,24 +3,24 @@
  <%#ユーザー=============================%>
     <section>
         <div class="row user-profile my-5">
-            <div class="col-md-3">
+            <div class="col-3">
                 <% if @other_user.user_image.attached? %>
                     <%= image_tag @other_user.user_image.variant(resize:'150x150').processed, class: 'user_image' %>
                 <% else %>
                     <%= image_tag("user_default.jpeg", :size => "100x100",class: 'default_image') %>
                 <% end %>
             </div>
-            <div class="col-md-8 user-discription">
+            <div class="col-8 user-discription">
                 <div class="user_name">
                     <h2><%= @other_user.name %></h2>
                 <p><%= @other_user.introduction %></p>
-                <div class="row mt-3 position-relative">
-                    <div class="col-md-3 follow">
+                <div class="row mt-3 ml-1 position-relative">
+                    <div class="col-4 col-md-3 follow">
                         <%= link_to user_following_users_path, class:'text-dark' do %>
                             フォロー <%= @other_user.followings.count %>
                         <% end %>
                     </div>
-                    <div class="col-md-3 follower">
+                    <div class="col-4 col-md-3 follower">
                         <%= link_to user_follower_users_path, class:'text-dark' do %>
                             フォロワー <%= @other_user.followers.count %>
                         <% end %>
@@ -49,7 +49,7 @@
             <% comment = Comment.where(content_id: content.id) %>
             <section class="card mb-3">
                 <div class="row justify-content-center content_conteiner">
-                    <div class="col-md-4">
+                    <div class="col-4">
                     <%= link_to user_other_user_path(content.user_id) do %>
                         <div class="my-2">
                             <% if content.user.user_image.attached? %>
@@ -64,7 +64,7 @@
                     <% end %>
                     </div>
                     <%= link_to time_line_path(content.id) do %>
-                        <div class="col-md-8 card-body user-discription">
+                        <div class="col-8 card-body user-discription">
                             <div class="content_info mb-2">
                                 <h3 class="card-title title"><%= content.name %></h3>
                                 <% if content.description? %>
@@ -76,7 +76,7 @@
                             <%= link_to content.url, content.url, class: 'd-block card-text url' %>
                             <div class="text-right mt-1">
                                 <span>カテゴリー:<%= content.category %></span>
-                                <span class="card-text text-right">
+                                <span class="card-text text-right d-block d-md-inline">
                                     <time datetime="<%= content.created_at %>">
                                         投稿日時：<%= time_ago_in_words(content.updated_at) %>前
                                     </time>
