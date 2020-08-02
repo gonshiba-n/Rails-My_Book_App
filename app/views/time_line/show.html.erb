@@ -87,7 +87,7 @@
                                     <% if user.user_image.attached? %>
                                         <%= image_tag user.user_image.variant(resize:'60x60').processed, class: 'd-block mx-auto' %>
                                     <% else %>
-                                        <%= image_tag("user_default.jpeg", :size => "80x80", class: 'd-block mx-auto') %>
+                                        <%= image_tag("user_default.jpeg", :size => "60x60", class: 'd-block mx-auto') %>
                                     <% end %>
                                     <p class="text-center mt-1"><%= user.name %></p>
                                 <% end %>
