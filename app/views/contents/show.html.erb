@@ -82,15 +82,15 @@
         <% content = Content.find(comment.content_id) %>
             <div class="card mb-1">
                 <div class="card-body row">
-                    <div class="col-md-2">
+                    <div class="col-4 col-md-2">
                         <% if user.user_image.attached? %>
-                            <%= image_tag user.user_image.variant(resize:'60x60',border:'10').processed, class: 'd-block mx-auto' %>
+                            <%= image_tag user.user_image.variant(resize:'60x60').processed, class: 'd-block mx-auto' %>
                         <% else %>
                             <%= image_tag("user_default.jpeg", :size => "80x80", class: 'd-block mx-auto') %>
                         <% end %>
                         <p class="text-center mt-1"><%= user.name %></p>
                     </div>
-                    <div class="col-md-10 my-auto">
+                    <div class="col-8 col-md-10 my-auto">
                         <%= comment.comment %>
                     </div>
                     <% if user == current_user || content.user_id == current_user.id %>
