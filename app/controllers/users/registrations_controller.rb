@@ -23,7 +23,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/edit
   def edit
     super do
-      resource.skip_reconfirmation!
+      #resource.skip_reconfirmation!
       resource.save
     end
   end
@@ -31,7 +31,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   def update
     super do
-      resource.skip_reconfirmation!
+      #resource.skip_reconfirmation!
       resource.save
     end
   end
