@@ -6,7 +6,7 @@ class Users::SessionsController < Devise::SessionsController
   # GET /resource/sign_in
   def new
     if params[:user_id]
-            @recruiter = User.find(params[:user_id])
+      @recruiter = User.find(params[:user_id])
       @pass = 'password'
     end
     super
