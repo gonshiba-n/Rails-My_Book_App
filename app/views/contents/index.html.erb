@@ -15,12 +15,12 @@
                 <h2><%= current_user.name %></h2>
                 <p><%= current_user.introduction %></p>
                 <div class="row ml-1">
-                    <div class="col-12 col-sm-6 follow">
+                    <div class="col-12 col-sm-4 col-md-3 follow">
                         <%= link_to user_following_users_path, class:'text-dark' do %>
                             フォロー <%= current_user.followings.count %>
                         <% end %>
                     </div>
-                    <div class="col-12 col-sm-6 follower">
+                    <div class="col-12 col-sm-4 col-md-3 follower">
                         <%= link_to user_follower_users_path, class:'text-dark' do %>
                             フォロワー <%= current_user.followers.count %>
                         <% end %>
