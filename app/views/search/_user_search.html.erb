@@ -19,12 +19,12 @@
                         <% end %>
                     </div>
                     <div class="row mt-3 ml-1 position-relative">
-                        <div class="col-4 follow">
+                        <div class="col-12 col-sm-4 col-md-3 follow">
                             <%= link_to user_following_users_path(user.id), class:'text-dark' do %>
                                 フォロー <%= user.followings.count %>
                             <% end %>
                         </div>
-                        <div class="col-4 follower">
+                        <div class="col-12 col-sm-4 col-md-3 follower">
                             <%= link_to user_follower_users_path(user.id), class:'text-dark' do %>
                                 フォロワー <%= user.followers.count %>
                             <% end %>
