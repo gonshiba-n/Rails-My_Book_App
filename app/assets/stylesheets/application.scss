@@ -124,6 +124,8 @@ input, select {
 }
 *{
     word-wrap: break-word;
+}
+.nicomoji {
     font-family: "Nico Moji";
 }
 *:focus {
@@ -264,6 +266,7 @@ footer p{
 .pagination>li>a {
     border: none;     /*枠線をなくす*/
     color: #696969;   /*文字の色を変える*/
+    font-family: "Nico Moji";
 }
 
 /* 表示しているページ番号のデザイン */

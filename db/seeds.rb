@@ -6,6 +6,13 @@
 # movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+def random_created_at
+  "2020-07-#{rand(10..31)} 00:00:00.#{rand(100000..500000)}"
+end
+def random_updated_at
+  "2020-07-#{rand(10..31)} 00:00:00.#{rand(100000..500000)}"
+end
+
 # ユーザーデータ=============================================================
 user = [
   {
@@ -52,7 +59,9 @@ user1.follow(user3)
       description: "#{no}のサイト",
       category: 'Webサイト',
       private: 1,
-      user_id: 1
+      user_id: 1,
+      created_at: random_created_at,
+      updated_at: random_updated_at
     }
   )
 end
@@ -64,7 +73,9 @@ end
       description: "Taroの勉強用サイトDEMO#{no}",
       category: 'Webサイト',
       private: 1,
-      user_id: 2
+      user_id: 2,
+      created_at: random_created_at,
+      updated_at: random_updated_at
     }
   )
 end
@@ -78,7 +89,9 @@ Content.create!(
       description: 'ブックマーク管理アプリ',
       category: 'Webアプリ',
       private: 1,
-      user_id: 1
+      user_id: 1,
+      created_at: random_created_at,
+      updated_at: random_updated_at
     },
     {
       id: 2,
@@ -87,7 +100,9 @@ Content.create!(
       description: '主に日々の学習を呟いています',
       category: 'SNS',
       private: 2,
-      user_id: 3
+      user_id: 3,
+      created_at: random_created_at,
+      updated_at: random_updated_at
     },
     {
       id: 3,
@@ -96,7 +111,9 @@ Content.create!(
       description: 'wantedlyプロフィールページです',
       category: 'SNS',
       private: 2,
-      user_id: 3
+      user_id: 3,
+      created_at: random_created_at,
+      updated_at: random_updated_at
     },
     {
       id: 4,
@@ -105,7 +122,9 @@ Content.create!(
       description: 'まいぶくを管理しているGitHubページです',
       category: 'プログラミング',
       private: 2,
-      user_id: 3
+      user_id: 3,
+      created_at: random_created_at,
+      updated_at: random_updated_at
     },
     {
       name: 'Ruby参考書',
@@ -113,7 +132,9 @@ Content.create!(
       description: 'プロを目指す人のためのRuby入門。RUbyの基礎部分を学びました。',
       category: 'プログラミング',
       private: 2,
-      user_id: 3
+      user_id: 3,
+      created_at: random_created_at,
+      updated_at: random_updated_at
     },
     {
       name: 'Ruby on Rails参考書',
@@ -121,7 +142,9 @@ Content.create!(
       description: '現場で使える Ruby on Rails 5速習実践ガイド。この参考書が私のRailsのベースを作りました',
       category: 'プログラミング',
       private: 2,
-      user_id: 3
+      user_id: 3,
+      created_at: random_created_at,
+      updated_at: random_updated_at
     },
     {
       name: 'Web参考書',
@@ -129,7 +152,9 @@ Content.create!(
       description: 'この一冊で全部わかるWeb技術の基本。最も理解がしやすい本を手に取りました',
       category: 'プログラミング',
       private: 2,
-      user_id: 3
+      user_id: 3,
+      created_at: random_created_at,
+      updated_at: random_updated_at
     },
     {
       name: 'Web参考書2',
@@ -137,7 +162,9 @@ Content.create!(
       description: 'Webを支える技術 -HTTP、URI、HTML、そしてREST。現在はこの参考書を読み進めています。',
       category: 'プログラミング',
       private: 2,
-      user_id: 3
+      user_id: 3,
+      created_at: random_created_at,
+      updated_at: random_updated_at
     },
   ]
 )
