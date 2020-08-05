@@ -136,7 +136,10 @@ $tl: 0.6s; // transition length
 
     th{
         padding: 3% !important;
-        font-size: 1rem;
+        font-size: 16px;
+            @media screen and (max-width: 991px) {
+                font-size: 14px;
+            }
     }
 
     td{
