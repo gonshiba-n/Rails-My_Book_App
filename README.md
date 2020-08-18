@@ -28,7 +28,9 @@ Ruby on Rails 5.2.4<br>
 ### データベース<br>
 PostgreSQL<br>
 ### インフラ<br>
-AWS S3<br>
+AWS S3-イメージストレージ<br>
+herokuーデプロイ<br>
+SendGridーメール送信機能
 ### バージョン管理<br>
 Git<br>
 GitHub
