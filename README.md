@@ -35,3 +35,6 @@ GitHub
 
 ## サイトマップ
 ![ダウンロード](https://user-images.githubusercontent.com/60422851/90516797-78259500-e19f-11ea-898c-bc57a822f2eb.png)
+
+## ER図
+![DB](https://user-images.githubusercontent.com/60422851/90531846-82508f00-e1b1-11ea-968e-7e9d163a6695.png)
