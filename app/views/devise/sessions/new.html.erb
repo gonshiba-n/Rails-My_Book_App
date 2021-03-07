@@ -65,8 +65,9 @@
       <% end %>
     <% end %>
 
-    <%= link_to "新規登録", root_path, class: 'd-block' %>
+    <%= link_to "新規登録", root_path, class: 'd-block', method: :get, data: { "turbolinks" => false } %>
     <%= link_to "パスワードをお忘れの方", new_user_password_path, class: 'd-block' %>
+    <%= link_to "TOPページへ", :root, class: 'd-block', data: { "turbolinks" => false } %>
     </div>
   </div>
 </section>

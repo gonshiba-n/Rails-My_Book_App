@@ -21,7 +21,7 @@
 	<body>
 		<header class="nicomoji">
 			<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light header-nav">
-				<%= link_to "まいぶく", :root, class: 'navbar-brand' %>
+				<%= link_to "まいぶく", :root, class: 'navbar-brand', data: {"turbolinks"=> false} %>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
@@ -36,10 +36,10 @@
 							</li>
 						<% else %>
 							<li class="nav-item">
-								<%= link_to "新規登録", root_path, class: 'nav-link' %>
+								<%= link_to "新規登録", root_path, class: 'nav-link', data: { "turbolinks" => false } %>
 							</li>
 							<li class="nav-item">
-								<%= link_to "ログイン", new_user_session_path, class: 'nav-link' %>
+								<%= link_to "ログイン", new_user_session_path, class: 'nav-link', data: { "turbolinks" => false } %>
 							</li>
 						<% end %>
 						<% if user_signed_in? %>
@@ -59,7 +59,9 @@
 		</header>
 		<%= yield %>
 		<footer class="conteiner-fluid nicomoji">
-			<div><a class="footer-logo" href="#">まいぶく</a></div>
+			<div>
+				<%= link_to "まいぶく", :root, class: "footer-logo", data: { "turbolinks" => false } %>
+			</div>
 			<p>Copyright &copy; Gonshiba</p>
 		</footer>
 		<%= render partial: 'layouts/script' %>

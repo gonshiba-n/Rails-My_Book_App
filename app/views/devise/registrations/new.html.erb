@@ -6,10 +6,8 @@
         </div>
         <div class="card col-md-5" style="width: 30rem;">
             <div class="card-body">
-                <h1 class="card-title">アカウント登録</h1>
+                <h1 class="card-title">アカウント登録は<br>こちらから</h1>
                 <h2>ブックマーク管理共有アプリ「まいぶく」</h2>
-                <%= link_to '採用ご担当者様ログインフォーム', new_user_session_path(user_id: 1), class: 'btn btn-warning mb-2' %>
-
                 <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
                     <%= render "devise/shared/error_messages", resource: resource %>
                     <div class="form-group">
@@ -34,10 +32,12 @@
                     <div class="form-group">
                         <%= f.button "Sign up", class: 'btn btn-primary' %>
                     </div>
+                    <p class="card-text">ゲストログインはこちら<i class="far fa-hand-point-down"></i></p>
+                    <%= link_to "ゲストログインフォーム", new_user_session_path(user_id: 1), class: "btn btn-warning mb-2", data: {"turbolinks"=> false} %>
                 <% end %>
 
                 <p class="card-text">新規登録済みの方はこちら<i class="far fa-hand-point-down"></i></p>
-                <%= link_to 'Login', new_user_session_path, class: 'btn btn-primary' %>
+                <%= link_to 'Login', new_user_session_path, class: 'btn btn-primary', data: { "turbolinks" => false } %>
             </div>
         </div>
     </div>
